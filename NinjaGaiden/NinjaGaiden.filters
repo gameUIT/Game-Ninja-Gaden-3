@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Animation">
+      <UniqueIdentifier>{1c5a62a7-1c41-4c5a-afbe-2609c2a22711}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Collision">
+      <UniqueIdentifier>{a3f17b42-ebae-4443-9059-7ac47bbad675}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects">
+      <UniqueIdentifier>{41e33cc3-b843-4867-80e7-38977e3030a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\Misc">
+      <UniqueIdentifier>{0e81773c-1cb0-46bc-816d-faa4bdb67ced}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\Enemies">
+      <UniqueIdentifier>{76560941-813c-45ae-9578-71a23fda0214}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Rect">
+      <UniqueIdentifier>{f5db890a-4025-4fc1-96d6-9b95c72658b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sprites">
+      <UniqueIdentifier>{6b39abc6-e716-4b22-bbc0-a858c3b4fc7f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tilemap">
+      <UniqueIdentifier>{5fe07873-05de-434b-9d3c-f95eb371e1fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utils">
+      <UniqueIdentifier>{5e5c6fe0-7055-493c-8fe8-6fa39278db0a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Window+DirectX">
+      <UniqueIdentifier>{7f749ed1-fd63-4d7c-89d9-b8e8d8063bcb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="World+Camera">
+      <UniqueIdentifier>{fda78115-d492-4d6f-9b2a-6dbebbf1c9f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\Ryu">
+      <UniqueIdentifier>{aaf8b90f-7278-4137-b31f-7ee8d9dd1011}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Animation.h">
+      <Filter>Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="World.h">
+      <Filter>World+Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>World+Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Window+DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="GameDirectX.h">
+      <Filter>Window+DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowGame.h">
+      <Filter>Window+DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="GameTime.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="GameTexture.h">
+      <Filter>Window+DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="KEY.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionType.h">
+      <Filter>Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionTypeCollide.h">
+      <Filter>Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision.h">
+      <Filter>Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseObject.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsObject.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="GameConfiguration.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="GameUtils.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Rect.h">
+      <Filter>Rect</Filter>
+    </ClInclude>
+    <ClInclude Include="MovableRect.h">
+      <Filter>Rect</Filter>
+    </ClInclude>
+    <ClInclude Include="FrameAnimation.h">
+      <Filter>Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="Tilemap.h">
+      <Filter>Tilemap</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteManager.h">
+      <Filter>Sprites</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>Sprites</Filter>
+    </ClInclude>
+    <ClInclude Include="List.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Ryu.h">
+      <Filter>Objects\Ryu</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Animation.cpp">
+      <Filter>Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>World+Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="World.cpp">
+      <Filter>World+Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Window+DirectX</Filter>
+    </ClCompile>
+    <ClCompile Include="GameDirectX.cpp">
+      <Filter>Window+DirectX</Filter>
+    </ClCompile>
+    <ClCompile Include="GameTexture.cpp">
+      <Filter>Window+DirectX</Filter>
+    </ClCompile>
+    <ClCompile Include="WinMain.cpp">
+      <Filter>Window+DirectX</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowGame.cpp">
+      <Filter>Window+DirectX</Filter>
+    </ClCompile>
+    <ClCompile Include="KEY.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionTypeCollide.cpp">
+      <Filter>Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Collision.cpp">
+      <Filter>Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsObject.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseObject.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="GameConfiguration.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="GameTime.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="GameUtils.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="MovableRect.cpp">
+      <Filter>Rect</Filter>
+    </ClCompile>
+    <ClCompile Include="Rect.cpp">
+      <Filter>Rect</Filter>
+    </ClCompile>
+    <ClCompile Include="Tilemap.cpp">
+      <Filter>Tilemap</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteManager.cpp">
+      <Filter>Sprites</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>Sprites</Filter>
+    </ClCompile>
+    <ClCompile Include="Ryu.cpp">
+      <Filter>Objects\Ryu</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

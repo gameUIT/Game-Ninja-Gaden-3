@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Animation.cpp">
+      <Filter>Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseObject.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsObject.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Ryu.cpp">
+      <Filter>Objects\Ryu</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>World+Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Collision.cpp">
+      <Filter>Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionTypeCollide.cpp">
+      <Filter>Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Windows+DirectX</Filter>
+    </ClCompile>
+    <ClCompile Include="GameConfiguration.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="GameDirectX.cpp">
+      <Filter>Windows+DirectX</Filter>
+    </ClCompile>
+    <ClCompile Include="GameTexture.cpp">
+      <Filter>Windows+DirectX</Filter>
+    </ClCompile>
+    <ClCompile Include="GameTime.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="GameUtils.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="KEY.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="MovableRect.cpp">
+      <Filter>Rect</Filter>
+    </ClCompile>
+    <ClCompile Include="Rect.cpp">
+      <Filter>Rect</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>Sprites</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteManager.cpp">
+      <Filter>Sprites</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowGame.cpp">
+      <Filter>Windows+DirectX</Filter>
+    </ClCompile>
+    <ClCompile Include="WinMain.cpp">
+      <Filter>Windows+DirectX</Filter>
+    </ClCompile>
+    <ClCompile Include="World.cpp">
+      <Filter>World+Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Tilemap.cpp">
+      <Filter>Tilemap</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Animation.h">
+      <Filter>Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseObject.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsObject.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Ryu.h">
+      <Filter>Objects\Ryu</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>World+Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision.h">
+      <Filter>Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionType.h">
+      <Filter>Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionTypeCollide.h">
+      <Filter>Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="FrameAnimation.h">
+      <Filter>Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Windows+DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="GameConfiguration.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="GameDirectX.h">
+      <Filter>Windows+DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="GameTexture.h">
+      <Filter>Windows+DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="GameTime.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="GameUtils.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="KEY.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="List.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="MovableRect.h">
+      <Filter>Rect</Filter>
+    </ClInclude>
+    <ClInclude Include="Rect.h">
+      <Filter>Rect</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>Sprites</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteManager.h">
+      <Filter>Sprites</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowGame.h">
+      <Filter>Windows+DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="World.h">
+      <Filter>World+Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Tilemap.h">
+      <Filter>Tilemap</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Animation">
+      <UniqueIdentifier>{b27580af-339d-4e89-b2b5-262ce11a936e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sprites">
+      <UniqueIdentifier>{3b0f7fe5-b571-4846-9f7d-40efed952546}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tilemap">
+      <UniqueIdentifier>{0acaae75-f73c-4f37-bd14-b8eb7de0a07a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects">
+      <UniqueIdentifier>{2fccd318-2912-41b9-824f-f6b8a52e0a40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\Enemies">
+      <UniqueIdentifier>{24037259-9a86-4f00-a597-01116f9d9acd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\Misc">
+      <UniqueIdentifier>{d8053b54-0b28-4e9e-89e6-629c6fdfa7b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\Ryu">
+      <UniqueIdentifier>{c905aeb5-a0f0-41bd-9925-154b814d1423}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Rect">
+      <UniqueIdentifier>{0f3a0d90-7fa0-46e2-a507-80329ab0880b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utils">
+      <UniqueIdentifier>{b760f67b-91aa-4918-afd5-b2781c428cb1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Windows+DirectX">
+      <UniqueIdentifier>{cb80e86d-b31f-4f57-917f-87e8f8f547db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="World+Camera">
+      <UniqueIdentifier>{31d09c28-5075-4707-8f86-9b35e8662ff4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Collision">
+      <UniqueIdentifier>{9b4e26ad-f9e3-4c38-a382-6c85f7be4965}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
