@@ -1,0 +1,17 @@
+Sprite panther
+R	G	B
+255	255	163	177
+Animation Count
+1
+
+
+Name
+Run
+Frame Count
+2
+
+FrameX		FrameY		FrameWidth		FrameHeight		AnchorX		AnchorY
+0			1			31				14				0			0
+31			0			24				15				0			0
+
+

@@ -1,14 +1,11 @@
 #pragma once
-
-
 #include"GameDirectX.h"
 
 enum TEXTURE_DIRECTION
 {
-	TEXTURE_DIRECTION_LEFT = -1,
-	TEXTURE_DIRECTION_RIGHT = 1
+	LEFT = -1,
+	RIGHT = 1
 };
-
 
 
 class GameTexture

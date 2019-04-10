@@ -1,5 +1,16 @@
 #include "BaseObject.h"
 
+BaseObject::BaseObject()
+{
+	animationIndex = 0;
+	frameIndex = 0;
+	setSprite(NULL);
+	animationGameTime.init(GLOBALS_D("object_animation_time_default"));
+	setStopCollision(false);
+	setIsAlive(true);
+	setRenderActive(true);
+}
+
 void BaseObject::setSprite(Sprite * sprite)
 {
 	this->sprite = sprite;
@@ -18,6 +29,16 @@ bool BaseObject::getPauseAnimation()
 void BaseObject::setPauseAnimation(bool pauseAnimation)
 {
 	this->pauseAnimation = pauseAnimation;
+}
+
+TEXTURE_DIRECTION BaseObject::getDirection()
+{
+	return this->direction;
+}
+
+void BaseObject::setDirection(TEXTURE_DIRECTION direction)
+{
+	this->direction = direction;
 }
 
 bool BaseObject::getIsLastFrameAnimationDone()
@@ -83,21 +104,107 @@ void BaseObject::render(Camera* camera)
 	float xView, yView;
 	/* tính tọa độ view để vẽ đối tượng lên màn hình */
 	camera->convertWorldToView(getX(), getY(), xView, yView);
+
+	/* hướng mặt mặc định của bức hình */
+	TEXTURE_DIRECTION imageDirection = sprite->image->direction;
+
+	/* hướng mặt của nhân vật */
+	TEXTURE_DIRECTION currentDirection = getDirection();
+
+	/* nếu hướng mặt của nhân vật khác với hướng mặt trong bức hình thì tiến hành lật hình */
+	if (imageDirection != currentDirection)
+	{
+		int currentFrameWidth = getSprite()->animations[getAnimation()]->frames[getFrameAnimation()]->right -
+			getSprite()->animations[getAnimation()]->frames[getFrameAnimation()]->left;
+		D3DXMATRIX flipMatrix;
+		D3DXMatrixIdentity(&flipMatrix);
+		flipMatrix._11 = -1;
+		flipMatrix._41 = 2 * (xView + currentFrameWidth / 2);
+		GameDirectX::getInstance()->GetSprite()->SetTransform(&flipMatrix);
+	}
+
 	/* vẽ đối tượng lên màn hình */
 	sprite->render(xView, yView, animationIndex, frameIndex);
+
+	if (direction != imageDirection)
+	{
+		/* khôi phục lại ma trận mặc định */
+		D3DXMATRIX identityMatrix;
+		D3DXMatrixIdentity(&identityMatrix);
+		GameDirectX::getInstance()->GetSprite()->SetTransform(&identityMatrix);
+	}
+
 }
 
-BaseObject::BaseObject()
+int BaseObject::getAnimation()
 {
-	animationIndex = 0;
-	frameIndex = 0;
-	setSprite(NULL);
-	animationGameTime.init(GLOBALS_D("object_animation_time_default"));
-	setStopCollision(false);
-	//setIsAlive(true);
-	//setRenderActive(true);
+	return animationIndex;
 }
 
+void BaseObject::setAnimation(int animation)
+{
+	/* nếu set khác animation thì cho chạy lại từ frame 0 */
+	if (this->animationIndex != animation)
+	{
+		setFrameAnimation(0);
+	}
+	this->animationIndex = animation;
+}
+
+int BaseObject::getFrameAnimation()
+{
+	return frameIndex;
+}
+
+void BaseObject::setFrameAnimation(int frameAnimation)
+{
+	this->frameIndex = frameAnimation;
+}
+
+Rect * BaseObject::getInitBox()
+{
+	return initBox;
+}
+
+void BaseObject::setInitBox(Rect * initBox)
+{
+	this->initBox = initBox;
+}
+
+void BaseObject::setRenderActive(bool renderActive)
+{
+	this->renderActive = renderActive;
+}
+bool BaseObject::getRenderActive()
+{
+	return this->renderActive;
+}
+
+int BaseObject::distanceHorToFirstLocation()
+{
+	return abs(this->getMidX() - initBox->getMidX());
+}
+
+void BaseObject::restoreLocation()
+{
+	set(initBox->getX(), initBox->getY(), initBox->getWidth(), initBox->getHeight());
+	setIsAlive(true);
+}
+
+bool BaseObject::getIsAlive()
+{
+	return isAlive;
+}
+
+void BaseObject::setIsAlive(bool isAlive)
+{
+	this->isAlive = isAlive;
+}
+
+bool BaseObject::canRemoveFromCamera()
+{
+	return true;
+}
 
 BaseObject::~BaseObject()
 {

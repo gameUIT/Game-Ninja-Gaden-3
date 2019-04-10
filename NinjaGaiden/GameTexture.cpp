@@ -7,7 +7,7 @@ GameTexture::GameTexture(const char* filepath, D3DCOLOR transColor)
 
 void GameTexture::Init(const char* filepath, D3DCOLOR transColor)
 {
-	direction = TEXTURE_DIRECTION_LEFT;
+	direction = LEFT;
 	HRESULT result;
 	D3DXIMAGE_INFO info;
 	result = D3DXGetImageInfoFromFileA(filepath, &info);

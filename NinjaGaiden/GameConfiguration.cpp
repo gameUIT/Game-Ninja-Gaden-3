@@ -28,12 +28,14 @@ double GameConfiguration::GetConfiguration(const char * key)
 		globalsConfigurationDouble->insert(pair<const char*, double>("object_animation_time_default", 120));
 
 		/* trọng lực mặc định của đối tượng 80 (px/s^2) */
-		globalsConfigurationDouble->insert(pair<const char*, double>("object_default_ay", -450));
+		globalsConfigurationDouble->insert(pair<const char*, double>("object_default_ay", -400));
 
-		globalsConfigurationDouble->insert(pair<const char*, double>("player_vx", 100));
-		globalsConfigurationDouble->insert(pair<const char*, double>("player_vy_jump", 180));
+		globalsConfigurationDouble->insert(pair<const char*, double>("player_vx", 120));
+		globalsConfigurationDouble->insert(pair<const char*, double>("player_vy_jump", 280)); //280
+		globalsConfigurationDouble->insert(pair<const char*, double>("player_blink_time", 10));
+		globalsConfigurationDouble->insert(pair<const char*, double>("player_blink_delay", 1000));
 
-		/* TODO tạo thêm các giá trị cấu hình double game tại đây 
+		/* TODO tạo thêm các giá trị cấu hình double game tại đây
 		Ví dụ: globalsConfiguration->insert(pair<const char*, double>("gia_tri_key", 10)); 10 la gia tri cua gia_tri_key
 		*/
 
@@ -50,7 +52,7 @@ const char * GameConfiguration::GetConfigurationString(const char * key)
 		globalsConfigurationString = new map<const char*, const char*>();
 
 		/* Tiêu đề của cửa sổ */
-		globalsConfigurationString->insert(pair<const char*,const char*>("window_title", "Ninja Gaiden"));
+		globalsConfigurationString->insert(pair<const char*, const char*>("window_title", "Ninja Gaiden"));
 		globalsConfigurationString->insert(pair<const char*, const  char*>("window_class", "win_game"));
 
 		/* TODO tạo thêm các giá trị cấu hình string game tại đây

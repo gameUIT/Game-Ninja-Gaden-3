@@ -10,7 +10,7 @@ public:
 	void moveY(float dy);
 	/* di chuyển hình chữ nhật theo 2 phương */
 	void move(float dx, float dy);
-	/* get set phương thức */
+
 	float getX();
 	float getY();
 	float getWidth();
@@ -22,8 +22,7 @@ public:
 	void setLocation(float x, float y);
 	void setSize(float width, float height);
 	void set(float x, float y, float width, float height);
-	/* lấy ra các phương left right top bottom của hình chữ nhật xem phương thức định nghĩa 
-	bên Rect.cpp sẽ hiểu */
+	/* lấy ra các phương left right top bottom của hình chữ nhật */
 	float getleft();
 	float getRight();
 	float getTop();

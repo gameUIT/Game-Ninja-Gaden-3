@@ -21,9 +21,18 @@ SpriteManager::SpriteManager()
 	}
 
 	/* thêm sprite ở đây */
+	/* sprite của sword man */
 
-	/* đăng ký sprite cho simon */
+
+	/* sprite của bat */
+
+
+	/* sprite của bird */
+
+
+	/* sprite của ryu */
 	sprites[SPRITE_INFO_RYU]->InitFromFile("assets/sprites/ryu/image.png", "assets/sprites/ryu/ryu.info.dat");
+	sprites[SPRITE_INFO_RYU]->image->direction = RIGHT;
 
 }
 SpriteManager::~SpriteManager()

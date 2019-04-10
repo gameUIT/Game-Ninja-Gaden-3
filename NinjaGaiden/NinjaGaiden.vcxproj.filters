@@ -19,9 +19,6 @@
     <ClCompile Include="Collision.cpp">
       <Filter>Collision</Filter>
     </ClCompile>
-    <ClCompile Include="CollisionTypeCollide.cpp">
-      <Filter>Collision</Filter>
-    </ClCompile>
     <ClCompile Include="Game.cpp">
       <Filter>Windows+DirectX</Filter>
     </ClCompile>
@@ -66,6 +63,9 @@
     </ClCompile>
     <ClCompile Include="Tilemap.cpp">
       <Filter>Tilemap</Filter>
+    </ClCompile>
+    <ClCompile Include="DelayTime.cpp">
+      <Filter>Utils</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -140,6 +140,12 @@
     </ClInclude>
     <ClInclude Include="Tilemap.h">
       <Filter>Tilemap</Filter>
+    </ClInclude>
+    <ClInclude Include="DelayTime.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Space.h">
+      <Filter>World+Camera</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

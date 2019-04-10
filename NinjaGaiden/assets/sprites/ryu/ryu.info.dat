@@ -1,8 +1,8 @@
-Sprite ryu_09_04_2019
+Sprite ryu
 R	G	B
 255	255	163	177
 Animation Count
-9
+10
 
 
 Name
@@ -17,12 +17,11 @@ FrameX		FrameY		FrameWidth		FrameHeight		AnchorX		AnchorY
 Name
 Run
 Frame Count
-3
+2
 
 FrameX		FrameY		FrameWidth		FrameHeight		AnchorX		AnchorY
 17			1			20				31				0			0
-37			1			22				31				0			0
-59			1			20				31				0			0
+37			1			20				31				0			0
 
 
 Name
@@ -31,7 +30,7 @@ Frame Count
 1
 
 FrameX		FrameY		FrameWidth		FrameHeight		AnchorX		AnchorY
-79			8			17				24				0			0
+57			8			17				24				0			-12
 
 
 Name
@@ -40,10 +39,10 @@ Frame Count
 4
 
 FrameX		FrameY		FrameWidth		FrameHeight		AnchorX		AnchorY
-79			8			17				24				0			0
-96			9			18				23				0			0
-114			9			39				23				0			0
-153			9			29				23				0			0
+57			8			17				24				0			-12
+74			9			18				23				0			-12
+92			9			39				23				0			-12
+131			9			29				23				0			-12
 
 
 Name
@@ -53,9 +52,9 @@ Frame Count
 
 FrameX		FrameY		FrameWidth		FrameHeight		AnchorX		AnchorY
 0			0			17				32				0			0
-182			1			18				31				0			0
-200			3			40				29				0			0
-240			3			29				29				0			0
+160			1			18				31				0			-1
+178			3			40				29				0			-1
+218			3			29				29				0			-1
 
 
 Name
@@ -64,10 +63,10 @@ Frame Count
 4
 
 FrameX		FrameY		FrameWidth		FrameHeight		AnchorX		AnchorY
-269			10			16				22				0			0
-285			16			22				16				0			0
-307			10			16				22				0			0
-323			16			22				16				0			0
+247			10			16				22				0			0
+263			16			22				16				0			0
+285			10			16				22				0			0
+301			16			22				16				0			0
 
 
 Name
@@ -76,10 +75,10 @@ Frame Count
 4
 
 FrameX		FrameY		FrameWidth		FrameHeight		AnchorX		AnchorY
-345			7			24				25				0			0
-369			8			25				24				0			0
-394			7			24				25				0			0
-418			8			25				24				0			0
+323			7			24				25				0			0
+347			8			25				24				0			0
+372			7			24				25				0			0
+396			8			25				24				0			0
 
 
 Name
@@ -88,8 +87,8 @@ Frame Count
 2
 
 FrameX		FrameY		FrameWidth		FrameHeight		AnchorX		AnchorY
-443			1			16				31				0			0
-459			3			16				29				0			0
+421			1			16				31				0			0
+437			3			16				29				0			0
 
 
 Name
@@ -98,8 +97,17 @@ Frame Count
 3
 
 FrameX		FrameY		FrameWidth		FrameHeight		AnchorX		AnchorY
-475			1			18				31				0			0
-493			3			26				29				0			0
-519			3			26				29				0			0
+453			1			18				31				0			0
+471			3			26				29				0			0
+497			3			26				29				0			0
+
+
+Name
+Hurt
+Frame Count
+1
+
+FrameX		FrameY		FrameWidth		FrameHeight		AnchorX		AnchorY
+247			10			16				22				0			0
 
 

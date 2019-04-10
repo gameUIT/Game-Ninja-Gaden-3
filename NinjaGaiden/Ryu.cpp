@@ -1,4 +1,4 @@
-#include "Ryu.h"
+﻿#include "Ryu.h"
 
 
 Ryu * Ryu::instance = 0;
@@ -11,31 +11,180 @@ Ryu * Ryu::getInstance()
 	return instance;
 }
 
+Ryu::Ryu()
+{
+	setDirection(RIGHT);
+	setSprite(SPR(SPRITE_INFO_RYU));
+	setCollisionType(CT_PLAYER);
+	setState(RYU_STATE_NORMAL);
+	canSitDown = true;
+	blinkTime.setDeltaTime(GLOBALS_D("player_blink_time"));
+	blinkDelay.init(GLOBALS_D("player_blink_delay"));
+}
+
 void Ryu::onUpdate(float dt)
 {
-	bool keyLeftDown, keyRightDown, keyUpDown, keyDownDown, keyJumpDown;
+	KEY* key = KEY::getInstance();
+	bool keyLeftDown, keyRightDown, keyUpDown, keyDownDown, keyJumpPress, keyAttackPress;
 	float vx = GLOBALS_D("player_vx");
-	KEY *key = KEY::getInstance();
+	float vy = GLOBALS_D("player_vy_jump");
+
 	keyLeftDown = key->isLeftDown;
 	keyRightDown = key->isRightDown;
 	keyUpDown = key->isUpDown;
 	keyDownDown = key->isDownDown;
-	keyJumpDown = key->isJumpDown;
+	keyJumpPress = key->isJumpPress;
+	keyAttackPress = key->isAttackPress;
 
-	if (getIsGrounded())
+	switch (state)
 	{
-		if (keyLeftDown)
+	case RYU_STATE_NORMAL:
+		if (getIsGrounded())
 		{
-			setVx(-vx);
+			setCanSitDown(true);
+
+			if (keyLeftDown)
+			{
+				setAnimation(RYU_ANIMATION_RUN);
+				setVx(getDirection() * vx);
+				setDirection(LEFT);
+
+				if (keyDownDown)
+				{
+					setState(RYU_STATE_SIT);
+				}
+				else if (keyAttackPress)
+				{
+					setState(RYU_STATE_ATTACK);
+				}
+			}
+			else if (keyRightDown)
+			{
+				setAnimation(RYU_ANIMATION_RUN);
+				setVx(getDirection() * vx);
+				setDirection(RIGHT);
+
+				if (keyDownDown)
+				{
+					setState(RYU_STATE_SIT);
+				}
+				else if (keyAttackPress)
+				{
+					setState(RYU_STATE_ATTACK);
+				}
+			}
+			else if (keyDownDown)
+			{
+				setState(RYU_STATE_SIT);
+			}
+			else if (keyAttackPress)
+			{
+				setState(RYU_STATE_ATTACK);
+			}
+			else
+			{
+				setAnimation(RYU_ANIMATION_STAND);
+				setVx(0);
+			}
+			if (keyJumpPress)
+			{
+				setVy(vy);
+			}
 		}
-		else if (keyRightDown)
+		else /* Nhân vật đang lơ lửng trên không */
 		{
-			setVx(vx);
+			setAnimation(RYU_ANIMATION_JUMP);
+
+			if (keyAttackPress)
+			{
+				setState(RYU_STATE_ATTACK);
+			}
 		}
-		else
+
+		PhysicsObject::onUpdate(dt);
+		break;
+	case RYU_STATE_RUN:
+		break;
+	case RYU_STATE_SIT:
+		setVx(0);
+		setDx(0);
+		setIsSitting(true);
+		setAnimation(RYU_ANIMATION_SIT);
+	
+		if (!keyDownDown)
 		{
+			setIsSitting(false);
+			setState(RYU_STATE_NORMAL);
+		}
+		else if (keyAttackPress)
+		{
+			setState(RYU_STATE_ATTACK);
+		}
+
+		PhysicsObject::onUpdate(dt);
+		break;
+	case RYU_STATE_JUMP:
+
+		PhysicsObject::onUpdate(dt);
+		break;
+	case RYU_STATE_CLIMBING:
+		break;
+	case RYU_STATE_ATTACK:
+		if (getIsGrounded())
+		{
+			setDx(0);
 			setVx(0);
+			if (isSitting)
+			{
+				if (keyLeftDown || keyRightDown)
+				{
+					setAnimation(RYU_ANIMATION_ATTACK_SIT);
+
+					if (getIsLastFrameAnimationDone())
+					{
+						setState(RYU_STATE_SIT);
+						setAnimation(RYU_ANIMATION_SIT);
+					}
+				}
+
+				setAnimation(RYU_ANIMATION_ATTACK_SIT);
+
+				if (getIsLastFrameAnimationDone())
+				{
+					setState(RYU_STATE_SIT);
+					setAnimation(RYU_ANIMATION_SIT);
+				}
+			}
+			else
+			{
+				setDx(0);
+				setVx(0);
+
+				setAnimation(RYU_ANIMATION_ATTACK_STAND);
+
+				if (getIsLastFrameAnimationDone())
+				{
+					setState(RYU_STATE_NORMAL);
+					setAnimation(RYU_ANIMATION_STAND);
+				}
+			}
 		}
+		else /* ryu đang nhảy */
+		{
+			setVx(getDirection() * vx);
+			setAnimation(RYU_ANIMATION_ATTACK_JUMP);
+
+			//if (getIsLastFrameAnimationDone())
+			//{
+			//	setState(RYU_STATE_NORMAL);
+			//	setAnimation(RYU_ANIMATION_JUMP);
+			//}
+		}
+
+		PhysicsObject::onUpdate(dt);
+		break;
+	default:
+		break;
 	}
 
 	PhysicsObject::onUpdate(dt);
@@ -43,17 +192,37 @@ void Ryu::onUpdate(float dt)
 
 void Ryu::onCollision(MovableRect * other, float collisionTime, int nx, int ny)
 {
-	preventMovementOnCollision(collisionTime, nx, ny);
-	PhysicsObject::onCollision(other, collisionTime, nx, ny);
+	if (other->getCollisionType() == CT_GROUND)
+	{
+		preventMovementOnCollision(collisionTime, nx, ny);
+		PhysicsObject::onCollision(other, collisionTime, nx, ny);
+	}
 }
 
-Ryu::Ryu()
+void Ryu::setIsSitting(bool isSitting)
 {
-	setSprite(SPR(SPRITE_INFO_RYU));
-	setCollisionType(CT_PLAYER);
-	//setSimonState(SIMON_STATE_NORMAL);
+	this->isSitting = isSitting;
 }
 
+void Ryu::setCanSitDown(bool canSitDown)
+{
+	this->canSitDown = canSitDown;
+}
+
+bool Ryu::getCanSitDown()
+{
+	return this->canSitDown;
+}
+
+RYU_STATE Ryu::getState()
+{
+	return this->state;
+}
+
+void Ryu::setState(RYU_STATE state)
+{
+	this->state = state;
+}
 
 Ryu::~Ryu()
 {
