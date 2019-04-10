@@ -95,6 +95,11 @@ void Ryu::onUpdate(float dt)
 		{
 			setAnimation(RYU_ANIMATION_JUMP);
 
+			//if (keyLeftDown)
+			//{
+			//	setVx(-vx / 2);
+			//}
+			
 			if (keyAttackPress)
 			{
 				setState(RYU_STATE_ATTACK);
@@ -136,42 +141,86 @@ void Ryu::onUpdate(float dt)
 			setVx(0);
 			if (isSitting)
 			{
-				if (keyLeftDown || keyRightDown)
+				switch (getDirection())
 				{
-					setAnimation(RYU_ANIMATION_ATTACK_SIT);
+				case RIGHT:
+					setAnimation(RYU_ANIMATION_ATTACK_SIT_RIGHT);
 
 					if (getIsLastFrameAnimationDone())
 					{
 						setState(RYU_STATE_SIT);
 						setAnimation(RYU_ANIMATION_SIT);
 					}
+					break;
+				case LEFT:
+					setAnimation(RYU_ANIMATION_ATTACK_SIT_LEFT);
+
+					if (getIsLastFrameAnimationDone())
+					{
+						setState(RYU_STATE_SIT);
+						setAnimation(RYU_ANIMATION_SIT);
+					}
+					break;
+				default:
+					break;
 				}
 
-				setAnimation(RYU_ANIMATION_ATTACK_SIT);
+				//setAnimation(RYU_ANIMATION_ATTACK_SIT_RIGHT);
 
-				if (getIsLastFrameAnimationDone())
-				{
-					setState(RYU_STATE_SIT);
-					setAnimation(RYU_ANIMATION_SIT);
-				}
+				//if (getIsLastFrameAnimationDone())
+				//{
+				//	setState(RYU_STATE_SIT);
+				//	setAnimation(RYU_ANIMATION_SIT);
+				//}
 			}
 			else
 			{
 				setDx(0);
 				setVx(0);
 
-				setAnimation(RYU_ANIMATION_ATTACK_STAND);
-
-				if (getIsLastFrameAnimationDone())
+				switch (getDirection())
 				{
-					setState(RYU_STATE_NORMAL);
-					setAnimation(RYU_ANIMATION_STAND);
+				case RIGHT:
+					setAnimation(RYU_ANIMATION_ATTACK_STAND_RIGHT);
+
+					if (getIsLastFrameAnimationDone())
+					{
+						setState(RYU_STATE_NORMAL);
+						setAnimation(RYU_ANIMATION_STAND);
+					}
+					break;
+				case LEFT:
+					setAnimation(RYU_ANIMATION_ATTACK_STAND_LEFT);
+
+					if (getIsLastFrameAnimationDone())
+					{
+						setState(RYU_STATE_NORMAL);
+						setAnimation(RYU_ANIMATION_STAND);
+					}
+					break;
+				default:
+					setAnimation(RYU_ANIMATION_ATTACK_STAND_RIGHT);
+
+					if (getIsLastFrameAnimationDone())
+					{
+						setState(RYU_STATE_NORMAL);
+						setAnimation(RYU_ANIMATION_STAND);
+					}
+					break;
 				}
+
+				//setAnimation(RYU_ANIMATION_ATTACK_STAND);
+
+				//if (getIsLastFrameAnimationDone())
+				//{
+				//	setState(RYU_STATE_NORMAL);
+				//	setAnimation(RYU_ANIMATION_STAND);
+				//}
 			}
 		}
 		else /* ryu đang nhảy */
 		{
-			setVx(getDirection() * vx);
+			//setVx(getDirection() * vx);
 			setAnimation(RYU_ANIMATION_ATTACK_JUMP);
 
 			//if (getIsLastFrameAnimationDone())
