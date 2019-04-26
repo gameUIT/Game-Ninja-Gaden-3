@@ -14,8 +14,7 @@ enum SPRITE_INFO
 
 	/* đối tượng có hình ảnh ta sẽ đặt số dương */
 	SPRITE_INFO_RYU = 0,
-
-	// thêm các sprite_info khác ở đây
+	SPRITE_INFO_SWORDMAN = 1,
 
 	SPRITE_COUNT
 };

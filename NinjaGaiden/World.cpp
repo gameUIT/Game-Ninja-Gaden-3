@@ -1,14 +1,16 @@
 #include"World.h"
 #include"Camera.h"
 #include"Ryu.h"
+#include"SwordMan.h"
 #include"KEY.h"
 #include"Collision.h"
 
 void World::Init(
-	const char * tilesheetPath, 
-	const char * matrixPath, 
-	const char * objectsPath, 
-	const char* collisionTypeCollidePath)
+	const char* tilesheetPath, 
+	const char* matrixPath, 
+	const char* objectsPath, 
+	const char* collisionTypeCollidePath,
+	const char* spacePath)
 {
 	/* khởi tạo vị trí player */
 	Ryu::getInstance()->set(52, 100, 16, 30);
@@ -36,6 +38,10 @@ void World::Init(
 		fs >> id;
 		switch (id)
 		{
+
+		case SPRITE_INFO_SWORDMAN:
+			obj = new SwordMan();
+			break;
 			
 		default:
 			obj = new BaseObject();
@@ -68,6 +74,40 @@ void World::Init(
 		collisionTypeCollide->COLLISION_TYPE_2 = (COLLISION_TYPE)collisionType2;
 		collisionTypeCollides._Add(collisionTypeCollide);
 	}
+
+	/* đọc space */
+	int numberOfSpaces = 0;
+	ifstream fsSpace(spacePath);
+	/* enter 1 dòng */
+	ignoreLineIfstream(fsSpace, 1);
+	fsSpace >> numberOfSpaces;
+	for (size_t i = 0; i < numberOfSpaces; i++)
+	{
+		/* enter 4 dòng */
+		ignoreLineIfstream(fsSpace, 4);
+		Space* space = new Space();
+		fsSpace >> space->X >> space->Y >> space->Width >> space->Height;
+
+		/* enter 2 dòng */
+		ignoreLineIfstream(fsSpace, 2);
+		fsSpace >> space->CameraX >> space->CameraY;
+
+		/* enter 2 dòng */
+		ignoreLineIfstream(fsSpace, 2);
+		fsSpace >> space->PlayerX >> space->PlayerY;
+
+		/* do chiều y của trong file định nghĩa ngược với chiều logic nên cần đổi lại */
+		space->CameraY = worldHeight - space->CameraY;
+		space->PlayerY = worldHeight - space->PlayerY;
+		space->Y = worldHeight - space->Y;
+
+		/* thêm vào space */
+		spaces._Add(space);
+	}
+
+	/* bắt đầu từ space 0 */
+	setCurrentSpace(0);
+	resetLocationInSpace();
 }
 
 void World::Init(const char * folderPath)
@@ -87,11 +127,15 @@ void World::Init(const char * folderPath)
 	string collisionTypeCollidePath = folderPathString;
 	collisionTypeCollidePath.append("/collision_type_collides.dat");
 
+	string spacePath = folderPathString;
+	spacePath.append("/spaces.dat");
+
 	Init(
 		tilesheetString.c_str(), 
 		matrixPathString.c_str(), 
 		objectPathString.c_str(),
-		collisionTypeCollidePath.c_str());
+		collisionTypeCollidePath.c_str(),
+		spacePath.c_str());
 }
 
 void World::update(float dt)
@@ -124,8 +168,8 @@ void World::update(float dt)
 				Collision::CheckCollision(collection1->at(i1), collection2->at(i2));
 			}
 		}
-
 	}
+
 
 	Ryu::getInstance()->update(dt);
 	Camera::getInstance()->update();
@@ -140,6 +184,26 @@ void World::render()
 		allObjects[i]->render(Camera::getInstance());
 	}
 	Ryu::getInstance()->render(Camera::getInstance());
+}
+
+void World::setCurrentSpace(int spaceIndex)
+{
+	this->currentSpace = spaces.at(spaceIndex);
+	Camera::getInstance()->setSpace(this->currentSpace);
+}
+
+Space * World::getCurrentSpace()
+{
+	return this->currentSpace;
+}
+
+void World::resetLocationInSpace()
+{
+	Camera* camera = Camera::getInstance();
+	Ryu* ryu = Ryu::getInstance();
+
+	camera->setLocation(getCurrentSpace()->CameraX, getCurrentSpace()->CameraY);
+	ryu->setLocation(getCurrentSpace()->PlayerX, getCurrentSpace()->PlayerY);
 }
 
 World::World()

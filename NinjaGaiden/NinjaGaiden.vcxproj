@@ -146,6 +146,7 @@
     <ClInclude Include="CollisionType.h" />
     <ClInclude Include="CollisionTypeCollide.h" />
     <ClInclude Include="DelayTime.h" />
+    <ClInclude Include="Enemy.h" />
     <ClInclude Include="FrameAnimation.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameConfiguration.h" />
@@ -162,6 +163,7 @@
     <ClInclude Include="Space.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="SpriteManager.h" />
+    <ClInclude Include="SwordMan.h" />
     <ClInclude Include="Tilemap.h" />
     <ClInclude Include="WindowGame.h" />
     <ClInclude Include="World.h" />
@@ -172,6 +174,7 @@
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="DelayTime.cpp" />
+    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameConfiguration.cpp" />
     <ClCompile Include="GameDirectX.cpp" />
@@ -185,6 +188,7 @@
     <ClCompile Include="Ryu.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SpriteManager.cpp" />
+    <ClCompile Include="SwordMan.cpp" />
     <ClCompile Include="Tilemap.cpp" />
     <ClCompile Include="WindowGame.cpp" />
     <ClCompile Include="WinMain.cpp" />

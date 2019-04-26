@@ -1,7 +1,6 @@
 #include "Game.h"
 
 
-/* singleton pattern */
 Game * Game::instance = 0;
 Game * Game::getInstance()
 {
@@ -17,12 +16,16 @@ void Game::GameInit()
 	world = new World();
 	world->Init("assets/levels/level3_1");
 
-	Camera::getInstance()->set(
-		0,
-		192, /* y camera */
-		/* kích thước của camera bằng với kích thước của backbuffer */
-		GLOBALS_D("backbuffer_width"), 
+	Camera::getInstance()->setSize(
+		GLOBALS_D("backbuffer_width"),
 		GLOBALS_D("backbuffer_height"));
+
+	//Camera::getInstance()->set(
+	//	0,
+	//	192, /* y camera */
+	//	/* kích thước của camera bằng với kích thước của backbuffer */
+		//GLOBALS_D("backbuffer_width"), 
+		//GLOBALS_D("backbuffer_height"));
 }
 /* Các câu lệnh cập nhật game */
 void Game::GameUpdate(float dt)

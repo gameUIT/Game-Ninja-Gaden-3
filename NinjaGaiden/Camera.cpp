@@ -30,18 +30,25 @@ void Camera::convertWorldToView(float xWorld, float yWorld, float & xView, float
 	yView = MatrixResult.y;
 }
 
+void Camera::setSpace(Space * space)
+{
+	this->space = space;
+}
+
 void Camera::update()
 {
 	/* mặc định cho camera đứng yên, chỉ khi player chạy nó mới chạy theo */
 	setDx(0);
 
 	Ryu* ryu = Ryu::getInstance();
+
 	/* nếu player đang chạy sang trái (player->getDx()<0) và phần giữa camera nằm bên phải phần giữa player */
 	if (ryu->getDx() < 0 && getMidX() > ryu->getMidX())
 	{
 		/* thì cho camera chạy theo player (về bên trái) */
 		setDx(ryu->getDx());
 	}
+
 	/* nếu player đang chạy sang phải (player->getDx()>0) và phần giữa camera nằm bên trái phần giữa player */
 	if (ryu->getDx() > 0 && getMidX() < ryu->getMidX())
 	{
@@ -49,6 +56,34 @@ void Camera::update()
 		setDx(ryu->getDx());
 	}
 
+	/* nếu camera chạy sang trái và vượt quá góc trái space  */
+	if (getX() + getDx() < space->X && getDx() < 0)
+	{
+		setX(space->X);
+		setDx(0);
+	}
+
+	/* nếu camera chạy sang phải và vượt quá góc phải space  */
+	if (getRight() + getDx() > space->X + space->Width && getDx() > 0)
+	{
+		setX(space->X + space->Width - getWidth());
+		setDx(0);
+	}
+
+	/* nếu player chạy sang trái và vượt quá góc trái space  */
+	if (ryu->getX() + ryu->getDx() < space->X && ryu->getDx() < 0)
+	{
+		ryu->setX(space->X);
+		ryu->setDx(0);
+	}
+
+	/* nếu player chạy sang phải và vượt quá góc phải space  */
+	if (ryu->getRight() + ryu->getDx() > space->X + space->Width && ryu->getDx() > 0)
+	{
+		ryu->setX(space->X + space->Width - ryu->getWidth());
+		ryu->setDx(0);
+	}
+	
 	/* cập nhật vị trí camera */
 	goX();
 	goY();

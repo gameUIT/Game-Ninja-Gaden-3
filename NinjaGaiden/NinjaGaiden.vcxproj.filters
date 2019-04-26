@@ -67,6 +67,12 @@
     <ClCompile Include="DelayTime.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
+    <ClCompile Include="SwordMan.cpp">
+      <Filter>Objects\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Objects\Enemies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -146,6 +152,12 @@
     </ClInclude>
     <ClInclude Include="Space.h">
       <Filter>World+Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="SwordMan.h">
+      <Filter>Objects\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Objects\Enemies</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

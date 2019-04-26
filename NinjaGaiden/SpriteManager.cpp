@@ -22,7 +22,8 @@ SpriteManager::SpriteManager()
 
 	/* thêm sprite ở đây */
 	/* sprite của sword man */
-
+	sprites[SPRITE_INFO_SWORDMAN]->InitFromFile("assets/sprites/enemies/swordman/image.png", "assets/sprites/enemies/swordman/swordman.info.dat");
+	sprites[SPRITE_INFO_SWORDMAN]->image->direction = RIGHT;
 
 	/* sprite của bat */
 
