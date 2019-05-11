@@ -33,7 +33,7 @@ double GameConfiguration::GetConfiguration(const char * key)
 		globalsConfigurationDouble->insert(pair<const char*, double>("player_vx", 110));
 		globalsConfigurationDouble->insert(pair<const char*, double>("player_vy_jump", 280)); //280
 		globalsConfigurationDouble->insert(pair<const char*, double>("player_hit_vx", 100));
-		globalsConfigurationDouble->insert(pair<const char*, double>("player_hit_vy", 50));
+		globalsConfigurationDouble->insert(pair<const char*, double>("player_hit_vy", 150));
 		globalsConfigurationDouble->insert(pair<const char*, double>("player_blink_time", 10));
 		globalsConfigurationDouble->insert(pair<const char*, double>("player_blink_delay", 1000));
 

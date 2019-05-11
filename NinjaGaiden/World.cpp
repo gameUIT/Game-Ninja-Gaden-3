@@ -4,11 +4,13 @@
 #include"SwordMan.h"
 #include"KEY.h"
 #include"Collision.h"
+#include"RunTimeObject.h"
+#include"CollisionType.h"
 
 void World::Init(
-	const char* tilesheetPath, 
-	const char* matrixPath, 
-	const char* objectsPath, 
+	const char* tilesheetPath,
+	const char* matrixPath,
+	const char* objectsPath,
 	const char* collisionTypeCollidePath,
 	const char* spacePath)
 {
@@ -42,7 +44,7 @@ void World::Init(
 		case SPRITE_INFO_SWORDMAN:
 			obj = new SwordMan();
 			break;
-			
+
 		default:
 			obj = new BaseObject();
 			break;
@@ -131,8 +133,8 @@ void World::Init(const char * folderPath)
 	spacePath.append("/spaces.dat");
 
 	Init(
-		tilesheetString.c_str(), 
-		matrixPathString.c_str(), 
+		tilesheetString.c_str(),
+		matrixPathString.c_str(),
 		objectPathString.c_str(),
 		collisionTypeCollidePath.c_str(),
 		spacePath.c_str());
@@ -147,6 +149,23 @@ void World::update(float dt)
 		/* cập nhật đối tượng */
 		allObjects[i]->update(dt);
 		Collision::CheckCollision(Ryu::getInstance(), allObjects[i]);
+		Collision::CheckCollision(allObjects[i], Ryu::getInstance());
+	}
+
+	RunTimeObject::updateRuntimeObjects();
+
+	auto runTimeObjects = RunTimeObject::getRunTimeObjects();
+
+	auto enemies = objectCategories.at(COLLISION_TYPE::CT_ENEMY);
+
+	for (int ir = 0; ir < runTimeObjects->Count; ir++)
+	{
+		auto runTimeObject = runTimeObjects->at(ir);
+		for (int ie = 0; ie < enemies->Count; ie++)
+		{
+			auto enemy = enemies->at(ie);
+			Collision::CheckCollision(runTimeObject, enemy);
+		}
 	}
 
 	/* xét va chạm cho các loại đối tượng với nhau */
@@ -173,7 +192,7 @@ void World::update(float dt)
 
 	Ryu::getInstance()->update(dt);
 	Camera::getInstance()->update();
-}	
+}
 
 void World::render()
 {

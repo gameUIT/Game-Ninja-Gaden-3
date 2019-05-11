@@ -1,5 +1,5 @@
 ﻿#include "Ryu.h"
-
+#include"SwordRObject.h"
 
 Ryu * Ryu::instance = 0;
 Ryu * Ryu::getInstance()
@@ -71,6 +71,7 @@ void Ryu::onUpdate(float dt)
 				else if (keyAttackPress)
 				{
 					setState(RYU_STATE_ATTACK);
+
 				}
 			}
 			else if (keyDownDown)
@@ -79,6 +80,20 @@ void Ryu::onUpdate(float dt)
 			}
 			else if (keyAttackPress)
 			{
+				auto sword = new SwordRObject();
+				if (getDirection() == RIGHT)
+				{
+					sword->setX(getRight());
+				}
+				else
+				{
+					sword->setX(getleft() - 10);
+				}
+
+				sword->setY(getTop() + 10);
+				sword->setWidth(10);
+				sword->setHeight(10);
+
 				setState(RYU_STATE_ATTACK);
 			}
 			else
@@ -99,7 +114,7 @@ void Ryu::onUpdate(float dt)
 			//{
 			//	setVx(-vx / 2);
 			//}
-			
+
 			if (keyAttackPress)
 			{
 				setState(RYU_STATE_ATTACK);
@@ -115,7 +130,7 @@ void Ryu::onUpdate(float dt)
 		setDx(0);
 		setIsSitting(true);
 		setAnimation(RYU_ANIMATION_SIT);
-	
+
 		if (!keyDownDown)
 		{
 			setIsSitting(false);
@@ -246,6 +261,7 @@ void Ryu::onCollision(MovableRect * other, float collisionTime, int nx, int ny)
 		preventMovementOnCollision(collisionTime, nx, ny);
 		PhysicsObject::onCollision(other, collisionTime, nx, ny);
 	}
+
 }
 
 void Ryu::setIsSitting(bool isSitting)

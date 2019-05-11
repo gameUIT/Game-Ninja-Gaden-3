@@ -73,6 +73,12 @@
     <ClCompile Include="Enemy.cpp">
       <Filter>Objects\Enemies</Filter>
     </ClCompile>
+    <ClCompile Include="RunTimeObject.cpp">
+      <Filter>Objects\RunTimes</Filter>
+    </ClCompile>
+    <ClCompile Include="SwordRObject.cpp">
+      <Filter>Objects\RunTimes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -159,6 +165,12 @@
     <ClInclude Include="Enemy.h">
       <Filter>Objects\Enemies</Filter>
     </ClInclude>
+    <ClInclude Include="RunTimeObject.h">
+      <Filter>Objects\RunTimes</Filter>
+    </ClInclude>
+    <ClInclude Include="SwordRObject.h">
+      <Filter>Objects\RunTimes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Animation">
@@ -196,6 +208,9 @@
     </Filter>
     <Filter Include="Collision">
       <UniqueIdentifier>{9b4e26ad-f9e3-4c38-a382-6c85f7be4965}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\RunTimes">
+      <UniqueIdentifier>{0913340b-4d36-4298-93c9-c03b25637178}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

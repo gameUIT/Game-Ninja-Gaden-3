@@ -61,6 +61,9 @@ void BaseObject::onInitFromFile(ifstream& fs, int mapHeight)
 	y = mapHeight - y;
 	/* khởi tạo x y width height cho đối tượng */
 	set(x, y, width, height);
+	auto initBox = new Rect();
+	initBox->set(x, y, width, height);
+	setInitBox(initBox);
 }
 
 void BaseObject::update(float dt)

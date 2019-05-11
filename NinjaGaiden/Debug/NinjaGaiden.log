@@ -1,7 +1,4 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (SourceGame.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  Ryu.cpp
-c:\users\duy nguyen\documents\game-ninja-gaden-3\ninjagaiden\ryu.cpp(21): warning C4244: 'argument': conversion from 'double' to 'DWORD', possible loss of data
-c:\users\duy nguyen\documents\game-ninja-gaden-3\ninjagaiden\ryu.cpp(22): warning C4244: 'argument': conversion from 'double' to 'DWORD', possible loss of data
-c:\users\duy nguyen\documents\game-ninja-gaden-3\ninjagaiden\ryu.cpp(29): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-c:\users\duy nguyen\documents\game-ninja-gaden-3\ninjagaiden\ryu.cpp(30): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  Enemy.cpp
+c:\users\duy nguyen\documents\game-ninja-gaden-3\ninjagaiden\enemy.cpp(102): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   NinjaGaiden.vcxproj -> C:\Users\Duy Nguyen\Documents\Game-Ninja-Gaden-3\Debug\NinjaGaiden.exe

@@ -1,7 +1,7 @@
 ﻿#include"Enemy.h"
 #include"Ryu.h"
 #include"Collision.h"
-
+#include"RunTimeObject.h"
 
 Enemy::Enemy()
 {
@@ -33,6 +33,11 @@ void Enemy::onUpdate(float dt)
 
 void Enemy::onCollision(MovableRect* other, float collisionTime, int nx, int ny)
 {
+	Ryu* ryu = Ryu::getInstance();
+	if (other == ryu)
+	{
+		return;
+	}
 	preventMovementOnCollision(collisionTime, nx, ny);
 	PhysicsObject::onCollision(other, collisionTime, nx, ny);
 
@@ -63,6 +68,11 @@ void Enemy::onIntersect(MovableRect * other)
 		//}
 	}
 
+	if (other->getCollisionType() == CT_WEAPON)
+	{
+		restoreLocation();
+	}
+
 	//if (other->getCollisionType() == CT_WEAPON)
 	//{
 	//	((MorningStarAttack*)other)->setNeedDelete(true);
@@ -90,6 +100,10 @@ void Enemy::onCollisionWithPlayer()
 	Camera* camera = Camera::getInstance();
 	ryu->blinkDelay.start();
 	ryu->setVy(GLOBALS_D("player_hit_vy"));
+	//ryu->setVx(-(getDirection() * GLOBALS_D("player_hit_vx")));
+
+	//ryu->blinkDelay.setIsTerminated(true);
+
 	//if (!ryu->getIsOnStair())
 	//{
 	//	player->setAnimation(SIMON_ACTION_HURT);

@@ -159,11 +159,13 @@
     <ClInclude Include="MovableRect.h" />
     <ClInclude Include="PhysicsObject.h" />
     <ClInclude Include="Rect.h" />
+    <ClInclude Include="RunTimeObject.h" />
     <ClInclude Include="Ryu.h" />
     <ClInclude Include="Space.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="SpriteManager.h" />
     <ClInclude Include="SwordMan.h" />
+    <ClInclude Include="SwordRObject.h" />
     <ClInclude Include="Tilemap.h" />
     <ClInclude Include="WindowGame.h" />
     <ClInclude Include="World.h" />
@@ -185,10 +187,12 @@
     <ClCompile Include="MovableRect.cpp" />
     <ClCompile Include="PhysicsObject.cpp" />
     <ClCompile Include="Rect.cpp" />
+    <ClCompile Include="RunTimeObject.cpp" />
     <ClCompile Include="Ryu.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SpriteManager.cpp" />
     <ClCompile Include="SwordMan.cpp" />
+    <ClCompile Include="SwordRObject.cpp" />
     <ClCompile Include="Tilemap.cpp" />
     <ClCompile Include="WindowGame.cpp" />
     <ClCompile Include="WinMain.cpp" />
