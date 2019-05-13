@@ -108,6 +108,18 @@ void Ryu::onUpdate(float dt)
 		}
 		else /* Nhân vật đang lơ lửng trên không */
 		{
+
+			if (keyLeftDown)
+			{
+				setDirection(LEFT);
+				setVx(getDirection() * vx);
+			}
+			else if (keyRightDown)
+			{
+				setDirection(RIGHT);
+				setVx(getDirection() * vx);
+			}
+
 			setAnimation(RYU_ANIMATION_JUMP);
 
 			//if (keyLeftDown)

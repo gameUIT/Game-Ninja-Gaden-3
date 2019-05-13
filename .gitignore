@@ -1,11 +1,44 @@
-.vs/NinjaGaiden/v15/ipch/AutoPCH/fd8560d8e19a590/ENEMY.ipch
-.vs/NinjaGaiden/v15/ipch/AutoPCH/f2fd0208c0e01205/SWORDMAN.ipch
-.vs/NinjaGaiden/v15/ipch/AutoPCH/eeaad39a31ee7a16/SWORDMAN.ipch
-.vs/NinjaGaiden/v15/ipch/AutoPCH/b5f58d2966adcd24/GAME.ipch
-.vs/NinjaGaiden/v15/ipch/AutoPCH/b2bb11815e73cbd3/ENEMY.ipch
-.vs/NinjaGaiden/v15/ipch/AutoPCH/a2789def7bb6da50/SWORDROBJECT.ipch
-.vs/NinjaGaiden/v15/ipch/AutoPCH/8de74546aab6e9f3/RUNTIMEOBJECT.ipch
-.vs/NinjaGaiden/v15/ipch/AutoPCH/8377aa074bb4591b/CAMERA.ipch
-.vs/NinjaGaiden/v15/ipch/AutoPCH/3d1f015e39fcfe44/COLLISION.ipch
-.vs/NinjaGaiden/v15/ipch/AutoPCH/3a102a21f318b414/ANIMATION.ipch
-.vs/NinjaGaiden/v15/Browse.VC.opendb
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+/dist
+/tmp
+
+# dependencies
+/node_modules
+/bower_components
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+*.launch
+.settings/
+.vs/
+obj/
+bin/
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage/*
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
+package-lock
+
+# e2e
+/e2e/*.js
+/e2e/*.map
+
+#System Files
+.DS_Store
+Thumbs.db
+
+# VS files
+/gAMSPro.AngularUI.csproj.user
+project.lock.json
+Properties/launchSettings.json
+/GSOFTcore.gAMSPro.AngularUI.xproj.user
