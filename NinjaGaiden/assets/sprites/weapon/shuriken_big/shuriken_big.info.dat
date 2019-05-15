@@ -1,0 +1,17 @@
+Sprite shuriken_big
+R	G	B
+255	0	128	128
+Animation Count
+1
+
+
+Name
+Animation
+Frame Count
+2
+
+FrameX		FrameY		FrameWidth		FrameHeight		AnchorX		AnchorY
+0			0			16				16				0			0
+16			0			16				16				0			0
+
+

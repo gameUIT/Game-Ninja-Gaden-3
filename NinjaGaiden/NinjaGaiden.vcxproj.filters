@@ -79,6 +79,21 @@
     <ClCompile Include="SwordRObject.cpp">
       <Filter>Objects\RunTimes</Filter>
     </ClCompile>
+    <ClCompile Include="Banshee.cpp">
+      <Filter>Objects\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Shooter.cpp">
+      <Filter>Objects\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Panther.cpp">
+      <Filter>Objects\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Bird.cpp">
+      <Filter>Objects\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Bat.cpp">
+      <Filter>Objects\Enemies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -170,6 +185,21 @@
     </ClInclude>
     <ClInclude Include="SwordRObject.h">
       <Filter>Objects\RunTimes</Filter>
+    </ClInclude>
+    <ClInclude Include="Banshee.h">
+      <Filter>Objects\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Shooter.h">
+      <Filter>Objects\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Panther.h">
+      <Filter>Objects\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Bird.h">
+      <Filter>Objects\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Bat.h">
+      <Filter>Objects\Enemies</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

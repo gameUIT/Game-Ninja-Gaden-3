@@ -20,16 +20,29 @@ SpriteManager::SpriteManager()
 		sprites._Add(new Sprite());
 	}
 
-	/* thêm sprite ở đây */
 	/* sprite của sword man */
 	sprites[SPRITE_INFO_SWORDMAN]->InitFromFile("assets/sprites/enemies/swordman/image.png", "assets/sprites/enemies/swordman/swordman.info.dat");
 	sprites[SPRITE_INFO_SWORDMAN]->image->direction = RIGHT;
 
+	/* sprite của panther */
+	sprites[SPRITE_INFO_PANTHER]->InitFromFile("assets/sprites/enemies/panther/image.png", "assets/sprites/enemies/panther/panther.info.dat");
+	sprites[SPRITE_INFO_PANTHER]->image->direction = RIGHT;
+
 	/* sprite của bat */
+	sprites[SPRITE_INFO_BAT]->InitFromFile("assets/sprites/enemies/bat/image.png", "assets/sprites/enemies/bat/bat.info.dat");
+	sprites[SPRITE_INFO_BAT]->image->direction = RIGHT;
 
+	/* sprite của brown_bird */
+	sprites[SPRITE_INFO_BROWN_BIRD]->InitFromFile("assets/sprites/enemies/brown_bird/image.png", "assets/sprites/enemies/brown_bird/brown_bird.info.dat");
+	sprites[SPRITE_INFO_BROWN_BIRD]->image->direction = RIGHT;
 
-	/* sprite của bird */
+	/* sprite của banshee */
+	sprites[SPRITE_INFO_BANSHEE]->InitFromFile("assets/sprites/enemies/banshee/image.png", "assets/sprites/enemies/banshee/banshee.info.dat");
+	sprites[SPRITE_INFO_BANSHEE]->image->direction = RIGHT;
 
+	/* sprite của shooter */
+	sprites[SPRITE_INFO_SHOOTER]->InitFromFile("assets/sprites/enemies/shooter/image.png", "assets/sprites/enemies/shooter/shooter.info.dat");
+	sprites[SPRITE_INFO_SHOOTER]->image->direction = RIGHT;
 
 	/* sprite của ryu */
 	sprites[SPRITE_INFO_RYU]->InitFromFile("assets/sprites/ryu/image.png", "assets/sprites/ryu/ryu.info.dat");

@@ -1,0 +1,28 @@
+Sprite shooter
+R	G	B
+255	255	163	177
+Animation Count
+2
+
+
+Name
+Walking
+Frame Count
+2
+
+FrameX		FrameY		FrameWidth		FrameHeight		AnchorX		AnchorY
+0			0			15				32				0			0
+15			0			16				32				0			0
+
+
+Name
+Shooting
+Frame Count
+3
+
+FrameX		FrameY		FrameWidth		FrameHeight		AnchorX		AnchorY
+31			0			24				32				0			0
+55			0			20				32				0			0
+75			21			2				11				0			0
+
+

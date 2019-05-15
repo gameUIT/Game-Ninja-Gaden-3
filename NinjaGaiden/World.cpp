@@ -6,6 +6,11 @@
 #include"Collision.h"
 #include"RunTimeObject.h"
 #include"CollisionType.h"
+#include"Banshee.h"
+#include"Bat.h"
+#include"Bird.h"
+#include"Panther.h"
+#include"Shooter.h"
 
 void World::Init(
 	const char* tilesheetPath,
@@ -43,6 +48,26 @@ void World::Init(
 
 		case SPRITE_INFO_SWORDMAN:
 			obj = new SwordMan();
+			break;
+
+		case SPRITE_INFO_BANSHEE:
+			obj = new Banshee();
+			break;
+
+		case SPRITE_INFO_BAT:
+			obj = new Bat();
+			break;
+
+		case SPRITE_INFO_BROWN_BIRD:
+			obj = new Bird();
+			break;
+
+		case SPRITE_INFO_PANTHER:
+			obj = new Panther();
+			break;
+
+		case SPRITE_INFO_SHOOTER:
+			obj = new Shooter();
 			break;
 
 		default:
