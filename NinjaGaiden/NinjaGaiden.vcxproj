@@ -141,10 +141,12 @@
   <ItemGroup>
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Banshee.h" />
+    <ClInclude Include="BansheeBullet.h" />
     <ClInclude Include="BaseObject.h" />
     <ClInclude Include="Bat.h" />
     <ClInclude Include="Bird.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="Cell.h" />
     <ClInclude Include="Collision.h" />
     <ClInclude Include="CollisionType.h" />
     <ClInclude Include="CollisionTypeCollide.h" />
@@ -157,6 +159,7 @@
     <ClInclude Include="GameTexture.h" />
     <ClInclude Include="GameTime.h" />
     <ClInclude Include="GameUtils.h" />
+    <ClInclude Include="Grid.h" />
     <ClInclude Include="KEY.h" />
     <ClInclude Include="List.h" />
     <ClInclude Include="MovableRect.h" />
@@ -165,7 +168,9 @@
     <ClInclude Include="Rect.h" />
     <ClInclude Include="RunTimeObject.h" />
     <ClInclude Include="Ryu.h" />
+    <ClInclude Include="ScoreBar.h" />
     <ClInclude Include="Shooter.h" />
+    <ClInclude Include="ShooterBullet.h" />
     <ClInclude Include="Space.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="SpriteManager.h" />
@@ -178,10 +183,12 @@
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Banshee.cpp" />
+    <ClCompile Include="BansheeBullet.cpp" />
     <ClCompile Include="BaseObject.cpp" />
     <ClCompile Include="Bat.cpp" />
     <ClCompile Include="Bird.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Cell.cpp" />
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="DelayTime.cpp" />
     <ClCompile Include="Enemy.cpp" />
@@ -191,6 +198,7 @@
     <ClCompile Include="GameTexture.cpp" />
     <ClCompile Include="GameTime.cpp" />
     <ClCompile Include="GameUtils.cpp" />
+    <ClCompile Include="Grid.cpp" />
     <ClCompile Include="KEY.cpp" />
     <ClCompile Include="MovableRect.cpp" />
     <ClCompile Include="Panther.cpp" />
@@ -198,7 +206,9 @@
     <ClCompile Include="Rect.cpp" />
     <ClCompile Include="RunTimeObject.cpp" />
     <ClCompile Include="Ryu.cpp" />
+    <ClCompile Include="ScoreBar.cpp" />
     <ClCompile Include="Shooter.cpp" />
+    <ClCompile Include="ShooterBullet.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SpriteManager.cpp" />
     <ClCompile Include="SwordMan.cpp" />

@@ -20,6 +20,7 @@ void Game::GameInit()
 		GLOBALS_D("backbuffer_width"),
 		GLOBALS_D("backbuffer_height"));
 
+
 	//Camera::getInstance()->set(
 	//	0,
 	//	192, /* y camera */

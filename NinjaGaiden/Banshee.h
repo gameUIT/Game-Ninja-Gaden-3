@@ -1,18 +1,21 @@
 #pragma once
 #include "Enemy.h"
+#include"DelayTime.h"
 
 
 enum BANSHEE_STATE
 {
-	BANSHEE_STATE_INVISIBLE,
-	BANSHEE_STATE_VISIBLE,
-	BANSHEE_STATE_ATTACK,
+	BANSHEE_STATE_RUN,
+	BANSHEE_STATE_FIRE
 };
 
 class Banshee :
 	public Enemy
 {
 	BANSHEE_STATE state;
+	int vDirection;
+	DelayTime runDelay;
+	DelayTime fireDelay;
 public:
 	void setState(BANSHEE_STATE state);
 	void onCollision(MovableRect* other, float collisionTime, int nx, int ny) override;

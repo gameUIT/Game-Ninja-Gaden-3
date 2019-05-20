@@ -100,7 +100,7 @@ void PhysicsObject::onCollision(MovableRect * other, float collisionTime, int nx
 	if (ny == 1)
 	{
 		setIsGrounded(true);
-		setVy(0.01);
+		setVy(0.1);
 	}
 
 	BaseObject::onCollision(other, collisionTime, nx, ny);

@@ -70,7 +70,8 @@ void Enemy::onIntersect(MovableRect * other)
 
 	if (other->getCollisionType() == CT_WEAPON)
 	{
-		restoreLocation();
+		//restoreLocation();
+		setRenderActive(false);
 	}
 
 	//if (other->getCollisionType() == CT_WEAPON)

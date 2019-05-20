@@ -104,6 +104,9 @@ void BaseObject::render(Camera* camera)
 	if (getSprite() == 0)
 		return;
 
+	if (!getRenderActive())
+		return;
+
 	float xView, yView;
 	/* tính tọa độ view để vẽ đối tượng lên màn hình */
 	camera->convertWorldToView(getX(), getY(), xView, yView);

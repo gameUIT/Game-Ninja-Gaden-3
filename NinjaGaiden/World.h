@@ -5,6 +5,12 @@
 #include"CollisionTypeCollide.h"
 #include"Space.h"
 
+enum WORLD_STATE
+{
+	WORLD_STATE_PAUSE,
+	WORLD_STATE_RUN
+};
+
 class World
 {
 	/* dùng tilemap để vẽ map */
@@ -23,7 +29,11 @@ class World
 	List<Space*> spaces;
 	Space* currentSpace;
 
+	static World* instance;
+
 public:
+	WORLD_STATE worldState;
+	static World* getInstance();
 	void Init(
 		const char* tilesheetPath, 
 		const char* matrixPath, 

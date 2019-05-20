@@ -1,12 +1,21 @@
 #include"Shooter.h"
 #include"Ryu.h"
+#include"ShooterBullet.h"
+#include"Camera.h"
+#include"Collision.h"
 
 Shooter::Shooter()
 {
 	setDirection(LEFT);
 	setSprite(SPR(SPRITE_INFO_SHOOTER));
 	setCollisionType(CT_ENEMY);
-	setState(SHOOTER_STATE_INVISIBLE);
+	setState(SHOOTER_STATE_RUN);
+
+	runDelay.init(GLOBALS_D("shooter_run_delay"));
+	fireDelay.init(GLOBALS_D("shooter_fire_delay"));
+	fireTime.init(GLOBALS_D("shooter_fire_time"));
+
+	runDelay.start();
 }
 
 void Shooter::setState(SHOOTER_STATE state)
@@ -28,26 +37,74 @@ void Shooter::onIntersect(MovableRect * other)
 	Enemy::onIntersect(other);
 }
 
+//("shooter_run_delay", 2000));
+//globalsConfigurationDouble->insert(pair<const char*, double>("shooter_fire_delay", 1000));
+//globalsConfigurationDouble->insert(pair<const char*, double>("shooter_fire_time", 100));
+//globalsConfigurationDouble->insert(pair<const char*, double>("shooter_vx", 80));
+
 void Shooter::onUpdate(float dt)
 {
+	runDelay.update();
+	fireDelay.update();
+
+	if (!Collision::AABBCheck(Camera::getInstance(), this))
+	{
+		setState(SHOOTER_STATE_INVISIBLE);
+	}
+
 	switch (state)
 	{
 	case SHOOTER_STATE_INVISIBLE:
 		setRenderActive(false);
-		setVx(0);
-		setDx(0);
-		if (abs(getMidX() - Ryu::getInstance()->getMidX()) < GLOBALS_D("swordman_distance_to_activate"))
+		if (Collision::AABBCheck(Camera::getInstance(), this))
 		{
-			setState(SHOOTER_STATE_VISIBLE);
+			setState(SHOOTER_STATE_RUN);
 			setRenderActive(true);
+			runDelay.start();
 		}
 		break;
-	case SHOOTER_STATE_VISIBLE:
-		setVx(GLOBALS_D("swordman_vx") * getDirection());
+	case SHOOTER_STATE_RUN:
+
+		setVx(GLOBALS_D("shooter_vx")* getDirection());
+
+		if (runDelay.isTerminated())
+		{
+			
+			setState(SHOOTER_STATE_FIRE);
+			fireDelay.start();
+		}
+
+
+		//if((getDx() < 0 && ((getMidX() - initBox->getMidX() )< bansheeDelta))||
+		//	(getDx() > 0 && ((getMidX() - initBox->getMidX() ) > bansheeDelta)))
+		////if(abs(getMidX() - getX()) > bansheeDelta)
+		//{
+		//	setX(initBox->getX());
+		//	vDirection = -vDirection;
+		//}
+		break;
+	case SHOOTER_STATE_FIRE:
+		setVx(0);
+
+		if (fireTime.atTime())
+		{
+			ShooterBullet* bullet = new ShooterBullet();
+			bullet->setVx(getDirection()* GLOBALS_D("shooter_bullet_vx"));
+			bullet->setX(getX());
+			bullet->setY(getY()-5);
+			bullet->setRenderActive(true);
+		}
+
+		if (fireDelay.isTerminated())
+		{
+			setState(SHOOTER_STATE_RUN);
+			runDelay.start();
+		}
 		break;
 	default:
 		break;
 	}
+
 
 	Enemy::onUpdate(dt);
 }
@@ -56,14 +113,8 @@ void Shooter::restoreLocation()
 {
 	BaseObject::restoreLocation();
 	int direction = getDirection();
-	if (direction == 1)
-	{
-		setState(SHOOTER_STATE_VISIBLE);
-	}
-	else
-	{
-		setState(SHOOTER_STATE_INVISIBLE);
-	}
+	setState(SHOOTER_STATE_RUN);
+
 }
 
 Shooter::~Shooter()

@@ -1,5 +1,8 @@
 ﻿#include "Ryu.h"
 #include"SwordRObject.h"
+#include"World.h"
+#include"Camera.h"
+#include"Collision.h"
 
 Ryu * Ryu::instance = 0;
 Ryu * Ryu::getInstance()
@@ -24,6 +27,13 @@ Ryu::Ryu()
 
 void Ryu::onUpdate(float dt)
 {
+	//if (!Collision::AABBCheck(Camera::getInstance(), this))
+	//{
+	//	restoreLocation();
+	//	Camera::getInstance()->setX(World::getInstance()->getCurrentSpace()->CameraX);
+	//	Camera::getInstance()->setY(World::getInstance()->getCurrentSpace()->CameraY);
+	//	return;
+	//}
 	KEY* key = KEY::getInstance();
 	bool keyLeftDown, keyRightDown, keyUpDown, keyDownDown, keyJumpPress, keyAttackPress;
 	float vx = GLOBALS_D("player_vx");
@@ -72,7 +82,7 @@ void Ryu::onUpdate(float dt)
 				{
 					setState(RYU_STATE_ATTACK);
 
-				}
+				}  
 			}
 			else if (keyDownDown)
 			{
@@ -90,8 +100,9 @@ void Ryu::onUpdate(float dt)
 					sword->setX(getleft() - 10);
 				}
 
-				sword->setY(getTop() + 10);
-				sword->setWidth(10);
+				//sword->setY(getTop() + 10);
+				sword->setY(getMidY());
+				sword->setWidth(14);
 				sword->setHeight(10);
 
 				setState(RYU_STATE_ATTACK);
@@ -122,14 +133,10 @@ void Ryu::onUpdate(float dt)
 
 			setAnimation(RYU_ANIMATION_JUMP);
 
-			//if (keyLeftDown)
-			//{
-			//	setVx(-vx / 2);
-			//}
-
 			if (keyAttackPress)
 			{
 				setState(RYU_STATE_ATTACK);
+				//setAnimation(RYU_ANIMATION_ATTACK_JUMP);
 			}
 		}
 

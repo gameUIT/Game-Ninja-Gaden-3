@@ -17,6 +17,10 @@ void Panther::setState(PANTHER_STATE state)
 void Panther::onCollision(MovableRect * other, float collisionTime, int nx, int ny)
 {
 	Enemy::onCollision(other, collisionTime, nx, ny);
+	if (ny == 1)
+	{
+		setVy(GLOBALS_D("panther_vy_jump"));
+	}
 }
 
 void Panther::onIntersect(MovableRect * other)
@@ -36,10 +40,11 @@ void Panther::onUpdate(float dt)
 		setRenderActive(false);
 		setVx(0);
 		setDx(0);
-		if (abs(getMidX() - Ryu::getInstance()->getMidX()) < GLOBALS_D("panther_distance_to_activate"))
+		if (Ryu::getInstance()->getMidX() - getMidX() > GLOBALS_D("panther_distance_to_activate"))
 		{
 			setState(PANTHER_STATE_VISIBLE);
 			setRenderActive(true);
+			setDirectionFollowPlayer();
 		}
 		break;
 	case PANTHER_STATE_VISIBLE:

@@ -39,12 +39,33 @@ double GameConfiguration::GetConfiguration(const char * key)
 
 		/*  PANTHER  */
 		globalsConfigurationDouble->insert(pair<const char*, double>("panther_vx", 150));
-		globalsConfigurationDouble->insert(pair<const char*, double>("panther_vy_jump", 50));
-		globalsConfigurationDouble->insert(pair<const char*, double>("panther_distance_to_activate", 80));
+		globalsConfigurationDouble->insert(pair<const char*, double>("panther_vy_jump", 80));
+		globalsConfigurationDouble->insert(pair<const char*, double>("panther_distance_to_activate", 200));
 
 		/*  SWORD MAN  */
 		globalsConfigurationDouble->insert(pair<const char*, double>("swordman_vx", 80));
 		globalsConfigurationDouble->insert(pair<const char*, double>("swordman_distance_to_activate", 200));
+
+		globalsConfigurationDouble->insert(pair<const char*, double>("bird_r", 2));
+		globalsConfigurationDouble->insert(pair<const char*, double>("bird_visible", 200));
+		globalsConfigurationDouble->insert(pair<const char*, double>("bird_min_x", 10));
+		globalsConfigurationDouble->insert(pair<const char*, double>("bird_max_x", 50));
+
+		globalsConfigurationDouble->insert(pair<const char*, double>("banshee_delta", 10));
+		globalsConfigurationDouble->insert(pair<const char*, double>("banshee_vx", 80));
+		globalsConfigurationDouble->insert(pair<const char*, double>("banshee_time_run", 2000));
+		globalsConfigurationDouble->insert(pair<const char*, double>("banshee_time_fire", 1000));
+
+		globalsConfigurationDouble->insert(pair<const char*, double>("banshee_weapon_vx", 80));
+		globalsConfigurationDouble->insert(pair<const char*, double>("banshee_weapon_vy", 130));
+
+		globalsConfigurationDouble->insert(pair<const char*, double>("shooter_run_delay", 2000));
+		globalsConfigurationDouble->insert(pair<const char*, double>("shooter_delta_activ", 100));
+		globalsConfigurationDouble->insert(pair<const char*, double>("shooter_fire_delay", 1000));
+		globalsConfigurationDouble->insert(pair<const char*, double>("shooter_fire_time", 300));
+		globalsConfigurationDouble->insert(pair<const char*, double>("shooter_vx", 80));
+
+		globalsConfigurationDouble->insert(pair<const char*, double>("shooter_bullet_vx", 200));
 
 	}
 	/* trả ra giá trị cấu hình tại key */

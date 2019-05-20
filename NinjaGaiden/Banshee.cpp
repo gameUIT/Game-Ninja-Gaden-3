@@ -1,12 +1,20 @@
 #include"Banshee.h"
 #include"Ryu.h"
+#include"BansheeBullet.h"
 
 Banshee::Banshee()
 {
 	setDirection(LEFT);
 	setSprite(SPR(SPRITE_INFO_BANSHEE));
 	setCollisionType(CT_ENEMY);
-	setState(BANSHEE_STATE_INVISIBLE);
+	setState(BANSHEE_STATE_RUN);
+	vDirection = -1;
+
+	runDelay.init(GLOBALS_D("banshee_time_run"));
+	fireDelay.init(GLOBALS_D("banshee_time_fire"));
+
+	runDelay.start();
+
 }
 
 void Banshee::setState(BANSHEE_STATE state)
@@ -16,6 +24,10 @@ void Banshee::setState(BANSHEE_STATE state)
 
 void Banshee::onCollision(MovableRect * other, float collisionTime, int nx, int ny)
 {
+	if (nx != 0)
+	{
+		return;
+	}
 	Enemy::onCollision(other, collisionTime, nx, ny);
 }
 
@@ -30,20 +42,58 @@ void Banshee::onIntersect(MovableRect * other)
 
 void Banshee::onUpdate(float dt)
 {
+	runDelay.update();
+	fireDelay.update();
+	auto bansheeDelta = GLOBALS_D("banshee_delta");
+	setDirectionFollowPlayer();
+
 	switch (state)
 	{
-	case BANSHEE_STATE_INVISIBLE:
-		setRenderActive(false);
-		setVx(0);
-		setDx(0);
-		if (abs(getMidX() - Ryu::getInstance()->getMidX()) < GLOBALS_D("swordman_distance_to_activate"))
+	case BANSHEE_STATE_RUN:
+
+		if (getRenderActive() == true)
 		{
-			setState(BANSHEE_STATE_VISIBLE);
-			setRenderActive(true);
+			if (getDx() < 0 && ((getMidX() - initBox->getMidX()) < -bansheeDelta))
+			{
+				vDirection = 1;
+			}
+
+			if (getDx() > 0 && ((getMidX() - initBox->getMidX()) > bansheeDelta))
+			{
+				vDirection = -1;
+			}
+
+			if (runDelay.isTerminated())
+			{
+				BansheeBullet* bullet = new BansheeBullet();
+				bullet->setVx(getDirection()* GLOBALS_D("banshee_weapon_vx"));
+				bullet->setVy(GLOBALS_D("banshee_weapon_vy"));
+				bullet->setX(getX());
+				bullet->setY(getY());
+				bullet->setRenderActive(true);
+				setState(BANSHEE_STATE_FIRE);
+				fireDelay.start();
+			}
 		}
+
+
+		//if((getDx() < 0 && ((getMidX() - initBox->getMidX() )< bansheeDelta))||
+		//	(getDx() > 0 && ((getMidX() - initBox->getMidX() ) > bansheeDelta)))
+		////if(abs(getMidX() - getX()) > bansheeDelta)
+		//{
+		//	setX(initBox->getX());
+		//	vDirection = -vDirection;
+		//}
+		setVx(GLOBALS_D("banshee_vx") * vDirection);
 		break;
-	case BANSHEE_STATE_VISIBLE:
-		setVx(GLOBALS_D("swordman_vx") * getDirection());
+	case BANSHEE_STATE_FIRE:
+		setVx(0);
+
+		if (fireDelay.isTerminated())
+		{
+			setState(BANSHEE_STATE_RUN);
+			runDelay.start();
+		}
 		break;
 	default:
 		break;
@@ -55,15 +105,8 @@ void Banshee::onUpdate(float dt)
 void Banshee::restoreLocation()
 {
 	BaseObject::restoreLocation();
-	int direction = getDirection();
-	if (direction == 1)
-	{
-		setState(BANSHEE_STATE_VISIBLE);
-	}
-	else
-	{
-		setState(BANSHEE_STATE_INVISIBLE);
-	}
+	setState(BANSHEE_STATE_RUN);
+
 }
 
 Banshee::~Banshee()

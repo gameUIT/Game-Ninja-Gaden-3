@@ -12,6 +12,12 @@
 #include"Panther.h"
 #include"Shooter.h"
 
+World * World::instance = 0;
+World * World::getInstance()
+{
+	return instance;
+}
+
 void World::Init(
 	const char* tilesheetPath,
 	const char* matrixPath,
@@ -21,6 +27,11 @@ void World::Init(
 {
 	/* khởi tạo vị trí player */
 	Ryu::getInstance()->set(52, 100, 16, 30);
+
+	Rect* ryuInitBox = new Rect();
+	ryuInitBox->set(52, 100, 16, 30);
+
+	Ryu::getInstance()->setInitBox(ryuInitBox);
 
 	/* khởi tạo tilemap */
 	tilemap.Init(tilesheetPath, matrixPath);
@@ -163,10 +174,12 @@ void World::Init(const char * folderPath)
 		objectPathString.c_str(),
 		collisionTypeCollidePath.c_str(),
 		spacePath.c_str());
+
 }
 
 void World::update(float dt)
 {
+
 	/* cập nhật key */
 	KEY::getInstance()->update();
 	for (size_t i = 0; i < allObjects.Count; i++)
@@ -186,6 +199,7 @@ void World::update(float dt)
 	for (int ir = 0; ir < runTimeObjects->Count; ir++)
 	{
 		auto runTimeObject = runTimeObjects->at(ir);
+		runTimeObject->update(dt);
 		for (int ie = 0; ie < enemies->Count; ie++)
 		{
 			auto enemy = enemies->at(ie);
@@ -221,7 +235,18 @@ void World::update(float dt)
 
 void World::render()
 {
+
+
 	tilemap.render(Camera::getInstance());
+
+	auto runTimeObjects = RunTimeObject::getRunTimeObjects();
+
+	for (int ir = 0; ir < runTimeObjects->Count; ir++)
+	{
+		auto runTimeObject = runTimeObjects->at(ir);
+		runTimeObject->render(Camera::getInstance());
+	}
+
 	for (size_t i = 0; i < allObjects.Count; i++)
 	{
 		/* vẽ đối tượng */
@@ -252,6 +277,7 @@ void World::resetLocationInSpace()
 
 World::World()
 {
+	instance = this;
 }
 World::~World()
 {

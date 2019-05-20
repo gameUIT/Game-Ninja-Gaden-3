@@ -48,6 +48,18 @@ SpriteManager::SpriteManager()
 	sprites[SPRITE_INFO_RYU]->InitFromFile("assets/sprites/ryu/image.png", "assets/sprites/ryu/ryu.info.dat");
 	sprites[SPRITE_INFO_RYU]->image->direction = RIGHT;
 
+	sprites[SPRITE_INFO_BANSHEE_WEAPON]->InitFromFile("assets/sprites/weapon/banshee_weapon/image.png"
+		, "assets/sprites/weapon/banshee_weapon/banshee_weapon.info.dat");
+	sprites[SPRITE_INFO_BANSHEE_WEAPON]->image->direction = RIGHT;
+
+	sprites[SPRITE_INFO_SHOOTER_WEAPON]->InitFromFile("assets/sprites/weapon/shooter_weapon/image.png"
+		, "assets/sprites/weapon/shooter_weapon/shooter_weapon.info.dat");
+	sprites[SPRITE_INFO_SHOOTER_WEAPON]->image->direction = RIGHT;
+
+	
+
+	
+
 }
 SpriteManager::~SpriteManager()
 {
