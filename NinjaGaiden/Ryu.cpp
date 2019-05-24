@@ -3,6 +3,8 @@
 #include"World.h"
 #include"Camera.h"
 #include"Collision.h"
+#include"Enemy.h"
+#include"ScoreBar.h"
 
 Ryu * Ryu::instance = 0;
 Ryu * Ryu::getInstance()
@@ -23,17 +25,53 @@ Ryu::Ryu()
 	canSitDown = true;
 	blinkTime.setDeltaTime(GLOBALS_D("player_blink_time"));
 	blinkDelay.init(GLOBALS_D("player_blink_delay"));
+	invisibleDelay.init(GLOBALS_D("player_invisible_delay"));
+	invisibleTime.init(GLOBALS_D("player_invisible_time"));
+	isHit = false;
 }
 
 void Ryu::onUpdate(float dt)
 {
-	//if (!Collision::AABBCheck(Camera::getInstance(), this))
-	//{
-	//	restoreLocation();
-	//	Camera::getInstance()->setX(World::getInstance()->getCurrentSpace()->CameraX);
-	//	Camera::getInstance()->setY(World::getInstance()->getCurrentSpace()->CameraY);
-	//	return;
-	//}
+	if (this->getTop() < Camera::getInstance()->getBottom())
+	{
+		restoreLocation();
+		Camera::getInstance()->setX(World::getInstance()->getCurrentSpace()->CameraX);
+		Camera::getInstance()->setY(World::getInstance()->getCurrentSpace()->CameraY);
+		return;
+	}
+
+	blinkDelay.update();
+	if (blinkDelay.isOnTime())
+	{
+		if (invisibleTime.atTime())
+		{
+			setRenderActive(true);
+		}
+		else
+		{
+			setRenderActive(false);
+		}
+	}
+	if (blinkDelay.isTerminated())
+	{
+		setRenderActive(true);
+	}
+	if (isHit)
+	{
+		PhysicsObject::onUpdate(dt);
+		if (getIsGrounded())
+		{
+			isHit = false;
+		}
+		else
+		{
+			return;
+		}
+	}
+
+
+
+
 	KEY* key = KEY::getInstance();
 	bool keyLeftDown, keyRightDown, keyUpDown, keyDownDown, keyJumpPress, keyAttackPress;
 	float vx = GLOBALS_D("player_vx");
@@ -65,6 +103,8 @@ void Ryu::onUpdate(float dt)
 				}
 				else if (keyAttackPress)
 				{
+					createNewSword();
+
 					setState(RYU_STATE_ATTACK);
 				}
 			}
@@ -80,6 +120,8 @@ void Ryu::onUpdate(float dt)
 				}
 				else if (keyAttackPress)
 				{
+					createNewSword();
+
 					setState(RYU_STATE_ATTACK);
 
 				}  
@@ -90,20 +132,7 @@ void Ryu::onUpdate(float dt)
 			}
 			else if (keyAttackPress)
 			{
-				auto sword = new SwordRObject();
-				if (getDirection() == RIGHT)
-				{
-					sword->setX(getRight());
-				}
-				else
-				{
-					sword->setX(getleft() - 10);
-				}
-
-				//sword->setY(getTop() + 10);
-				sword->setY(getMidY());
-				sword->setWidth(14);
-				sword->setHeight(10);
+				createNewSword();
 
 				setState(RYU_STATE_ATTACK);
 			}
@@ -131,11 +160,23 @@ void Ryu::onUpdate(float dt)
 				setVx(getDirection() * vx);
 			}
 
-			setAnimation(RYU_ANIMATION_JUMP);
+			if (getAnimation() == RYU_ANIMATION_ATTACK_JUMP)
+			{
+				if (getIsLastFrameAnimationDone())
+				{
+					setAnimation(RYU_ANIMATION_JUMP);
+				}
+			}
+			else
+			{
+				setAnimation(RYU_ANIMATION_JUMP);
+			}
 
 			if (keyAttackPress)
 			{
-				setState(RYU_STATE_ATTACK);
+				setAnimation(RYU_ANIMATION_ATTACK_JUMP);
+				createNewSword();
+				//setState(RYU_STATE_ATTACK);
 				//setAnimation(RYU_ANIMATION_ATTACK_JUMP);
 			}
 		}
@@ -157,6 +198,7 @@ void Ryu::onUpdate(float dt)
 		}
 		else if (keyAttackPress)
 		{
+			createNewSword();
 			setState(RYU_STATE_ATTACK);
 		}
 
@@ -277,15 +319,49 @@ void Ryu::onCollision(MovableRect * other, float collisionTime, int nx, int ny)
 {
 	if (other->getCollisionType() == CT_GROUND)
 	{
-		preventMovementOnCollision(collisionTime, nx, ny);
 		PhysicsObject::onCollision(other, collisionTime, nx, ny);
+		preventMovementOnCollision(collisionTime, nx, ny);
+		if (ny == 1)
+		{
+			isHit = false;
+		}
 	}
 
+}
+
+void Ryu::onIntersect(MovableRect* other)
+{
+	if (other->getCollisionType() == CT_ENEMY && !blinkDelay.isOnTime() && ((Enemy*)other)->getRenderActive())
+	{
+		blinkDelay.start();
+		isHit = true;
+		setVy(GLOBALS_D("player_hit_vy"));
+		setVx(-getDirection() * GLOBALS_D("player_hit_vx"));
+		ScoreBar::getInstance()->setHealth(ScoreBar::getInstance()->getHealth() - 1);
+	}
 }
 
 void Ryu::setIsSitting(bool isSitting)
 {
 	this->isSitting = isSitting;
+}
+
+void Ryu::createNewSword()
+{
+	auto sword = new SwordRObject();
+	if (getDirection() == RIGHT)
+	{
+		sword->setX(getRight());
+	}
+	else
+	{
+		sword->setX(getleft() - 10);
+	}
+
+	sword->setY(getTop() + 10);
+	//sword->setY(getMidY());
+	sword->setWidth(24);
+	sword->setHeight(30);
 }
 
 void Ryu::setCanSitDown(bool canSitDown)

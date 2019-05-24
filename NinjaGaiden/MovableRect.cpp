@@ -28,6 +28,16 @@ void MovableRect::preventMovementOnCollision(float collisionTime, int nx, int ny
 	}
 }
 
+bool MovableRect::getIsAlive()
+{
+	return isAlive;
+}
+
+void MovableRect::setIsAlive(bool isAlive)
+{
+	this->isAlive = isAlive;
+}
+
 bool MovableRect::getStopCollision()
 {
 	return this->stopCollision;

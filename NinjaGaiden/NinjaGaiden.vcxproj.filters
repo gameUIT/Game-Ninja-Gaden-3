@@ -107,6 +107,18 @@
       <Filter>Grid</Filter>
     </ClCompile>
     <ClCompile Include="ScoreBar.cpp" />
+    <ClCompile Include="ExplosionEffect.cpp">
+      <Filter>Objects\RunTimes</Filter>
+    </ClCompile>
+    <ClCompile Include="Butterfly.cpp">
+      <Filter>Objects\Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>Objects\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="Item1.cpp">
+      <Filter>Objects\Items</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -227,6 +239,18 @@
       <Filter>Grid</Filter>
     </ClInclude>
     <ClInclude Include="ScoreBar.h" />
+    <ClInclude Include="ExplosionEffect.h">
+      <Filter>Objects\RunTimes</Filter>
+    </ClInclude>
+    <ClInclude Include="Butterfly.h">
+      <Filter>Objects\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>Objects\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="Item1.h">
+      <Filter>Objects\Items</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Animation">
@@ -273,6 +297,9 @@
     </Filter>
     <Filter Include="UI">
       <UniqueIdentifier>{9ad34931-7093-4dc5-a504-b1a73a06c3ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\Items">
+      <UniqueIdentifier>{e3935fe0-e348-4845-ae9b-dd8117b5d9b4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

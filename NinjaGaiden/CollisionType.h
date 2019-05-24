@@ -7,6 +7,8 @@ enum COLLISION_TYPE
 	CT_WEAPON,
 	CT_ITEM,
 	CT_PLAYER,
+	CT_MISC,
 	/* số lượng collisionType luôn nằm cuối */
+	CT_ALL,
 	COLLISION_TYPE_COUNT
 };

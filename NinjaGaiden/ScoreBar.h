@@ -1,14 +1,7 @@
 #pragma once
 
-#include "SpriteManager.h"
-#include "GameTime.h"
-#include "BaseObject.h";
-
-enum SCOREBAR_ACTION
-{
-	SCOREBAR_ACTION_NUMBER,
-	SCOREBAR_ACTION_LOST_HEART
-};
+#include"SpriteManager.h"
+#include"GameTime.h"
 
 struct SCORE_LOCATION
 {
@@ -19,13 +12,11 @@ struct SCORE_LOCATION
 
 class ScoreBar
 {
-	BaseObject* subWeapon;
-	Sprite* scorebarItemSprite;
-	LPDIRECT3DTEXTURE9 scoreBar;
+	Sprite* miscSprite;
+	GameTexture* scoreBar;
 	void renderNumber(int num, int x, int y, int maxLength);
 	void renderHealth();
 	void renderBossHealth();
-	void renderSubWeapon();
 	static ScoreBar* instance;
 	SCORE_LOCATION lifeLocation;
 	SCORE_LOCATION heartLocation;
@@ -52,7 +43,6 @@ public:
 	void render();
 	void update();
 
-	void setSubWeapon(BaseObject* subWeapon);
 
 	void restoreHealth();
 	void restoreBossHealth();
@@ -84,6 +74,5 @@ public:
 	int getMaxHealth();
 
 	void setCurrentStageNumber(int currentStageNumber);
-	int getCurrentStageNumber();
 };
 

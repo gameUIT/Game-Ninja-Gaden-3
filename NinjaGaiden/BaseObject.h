@@ -13,7 +13,6 @@ class BaseObject :
 	int animationIndex, frameIndex;
 
 	/* dùng để làm chậm animation */
-	GameTime animationGameTime;
 
 	/* dừng animation */
 	bool pauseAnimation;
@@ -26,10 +25,11 @@ class BaseObject :
 	TEXTURE_DIRECTION direction;
 
 public:
+	GameTime animationGameTime;
+
 	/* dùng để restore location */
 	Rect* initBox;
 	bool renderActive;
-	bool isAlive;
 
 	void setSprite(Sprite*sprite);
 	Sprite* getSprite();
@@ -56,8 +56,7 @@ public:
 	Rect* getInitBox();
 	void setInitBox(Rect* initBox);
 
-	bool getIsAlive();
-	void setIsAlive(bool isAlive);
+
 
 	void setRenderActive(bool renderActive);
 	bool getRenderActive();

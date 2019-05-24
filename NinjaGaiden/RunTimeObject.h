@@ -4,6 +4,7 @@
 class RunTimeObject :
 	public PhysicsObject
 {
+protected:
 	static List<RunTimeObject*>* runTimeObjects;
 	bool removed;
 public:

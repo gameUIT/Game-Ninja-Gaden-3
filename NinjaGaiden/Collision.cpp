@@ -122,6 +122,10 @@ float Collision::SweptAABB(MovableRect* M, MovableRect* S, float & normalx, floa
 }
 void Collision::CheckCollision(MovableRect * M, MovableRect * S)
 {
+	if (!M->getIsAlive() || !S->getIsAlive())
+	{
+		return;
+	}
 	/* KIỂM TRA VÀ XỬ LÝ VA CHẠM */
 	/* tìm broadphasebox của M */
 	MovableRect* broadPhaseBox = GetSweptBroadPhaseBox(M);

@@ -41,6 +41,9 @@ class Ryu :
 
 	bool canSitDown;
 	bool isSitting;
+	DelayTime invisibleDelay;
+	GameTime invisibleTime;
+	bool isHit;
 public:
 	bool isDead;
 
@@ -49,12 +52,15 @@ public:
 
 	static Ryu* getInstance();
 	void onUpdate(float dt) override;
-	void onCollision(MovableRect* other, float collisionTime, int nx, int ny);
+	void onCollision(MovableRect* other, float collisionTime, int nx, int ny) override;
+	void onIntersect(MovableRect* other) override;
 
 	void setCanSitDown(bool canSitDown);
 	bool getCanSitDown();
 
 	void setIsSitting(bool isSitting);
+
+	void createNewSword();
 
 	RYU_STATE getState();
 	void setState(RYU_STATE state);

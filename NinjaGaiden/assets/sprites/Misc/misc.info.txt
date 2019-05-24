@@ -1,0 +1,244 @@
+Sprite ryu
+R	G	B
+255	0 10 0
+Count
+25
+
+
+Name
+Stand
+Frame Count
+10
+
+LocationX		LocationY		FrameWidth		FrameHeight	AnchorX		AnchorY
+121				188				7				7			0			0
+121             198             7               7			0			0
+129             188             7               7			0			0
+129             198             7               7			0			0
+137             188             7               7			0			0
+137             198             7               7			0			0
+145             188             7               7			0			0
+145             198             7               7			0			0
+153             188             7               7			0			0
+153             198             7               7			0			0
+
+
+Name
+Stand
+Frame Count
+1
+
+LocationX		LocationY		FrameWidth		FrameHeight	AnchorX		AnchorY
+74              22              16              16			0			0
+
+
+Name
+Stand
+Frame Count
+1
+
+LocationX		LocationY		FrameWidth		FrameHeight	AnchorX		AnchorY
+184              189              3              6			0			0
+
+
+Name
+Stand
+Frame Count
+1
+
+LocationX		LocationY		FrameWidth		FrameHeight	AnchorX		AnchorY
+115              4              16              9			0			0
+
+
+Name
+Stand
+Frame Count
+2
+
+LocationX		LocationY		FrameWidth		FrameHeight	AnchorX		AnchorY
+148             60              16              32			0			0
+166             60              16              32			0			0
+
+
+Name
+Stand
+Frame Count
+3
+
+LocationX		LocationY		FrameWidth		FrameHeight	AnchorX		AnchorY
+2               57              15               15			0			0
+2               74              15               15			0			0
+2				92				15			 	 15			0			0
+
+
+Name
+Stand
+Frame Count
+2
+
+LocationX		LocationY		FrameWidth		FrameHeight	AnchorX		AnchorY
+37              21              8               16			0			0
+47              21              8               16			0			0
+
+
+Name
+Stand
+Frame Count
+1
+
+LocationX		LocationY		FrameWidth		FrameHeight	AnchorX		AnchorY
+40				65				7				6			0			0
+
+
+Name
+Stand
+Frame Count
+1
+
+LocationX		LocationY		FrameWidth		FrameHeight	AnchorX		AnchorY
+74				22				16				16			0			0
+
+
+Name
+Stand
+Frame Count
+1
+
+LocationX		LocationY		FrameWidth		FrameHeight	AnchorX		AnchorY
+100				88				8				8			0			0
+
+
+Name
+Stand
+Frame Count
+1
+
+LocationX		LocationY		FrameWidth		FrameHeight	AnchorX		AnchorY
+162				37				7				14			0			0
+
+
+Name
+Stand
+Frame Count
+1
+
+LocationX		LocationY		FrameWidth		FrameHeight	AnchorX		AnchorY
+110				87				12				10			0			0
+
+
+Name
+Stand
+Frame Count
+1
+
+LocationX		LocationY		FrameWidth		FrameHeight	AnchorX		AnchorY
+115			    4				16			    9			0			0
+
+
+Name
+Stand
+Frame Count
+1
+
+LocationX		LocationY		FrameWidth		FrameHeight	AnchorX		AnchorY
+35			    40				16			    16			0			0
+
+
+Name
+Stand
+Frame Count
+1
+
+LocationX		LocationY		FrameWidth		FrameHeight	AnchorX		AnchorY
+107			    41				16			    16			0			0
+
+
+Name
+Stand
+Frame Count
+1
+
+LocationX		LocationY		FrameWidth		FrameHeight	AnchorX		AnchorY
+96			    2				15			    14			0			0
+
+
+Name
+Stand
+Frame Count
+1
+
+LocationX		LocationY		FrameWidth		FrameHeight	AnchorX		AnchorY
+59			    21				13			    16			0			0
+
+
+Name
+Stand
+Frame Count
+1
+
+LocationX		LocationY		FrameWidth		FrameHeight	AnchorX		AnchorY
+57			    40				15			    16			0			0
+
+
+Name
+Stand
+Frame Count
+1
+
+LocationX		LocationY		FrameWidth		FrameHeight	AnchorX		AnchorY
+0			    16				16			    16			0			0
+
+
+Name
+Stand
+Frame Count
+1
+
+LocationX		LocationY		FrameWidth		FrameHeight	AnchorX		AnchorY
+0			    0				16			    16			0			0
+
+
+Name
+Stand
+Frame Count
+1
+
+LocationX		LocationY		FrameWidth		FrameHeight	AnchorX		AnchorY
+83			    84				15			    15			0			0
+
+
+Name
+Stand
+Frame Count
+1
+
+LocationX		LocationY		FrameWidth		FrameHeight	AnchorX		AnchorY
+64			    84				15			    15			0			0
+
+
+Name
+Stand
+Frame Count
+1
+
+LocationX		LocationY		FrameWidth		FrameHeight	AnchorX		AnchorY
+46			    84			    15			    15			0			0
+
+
+Name
+Stand
+Frame Count
+1
+
+LocationX		LocationY		FrameWidth		FrameHeight	AnchorX		AnchorY
+77				2				15				14			0			0
+
+
+Name
+Stand
+Frame Count
+2
+
+LocationX		LocationY		FrameWidth		FrameHeight	AnchorX		AnchorY
+60				2				14				14			0			0
+77				2				15				14			0			0

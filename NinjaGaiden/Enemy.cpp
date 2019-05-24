@@ -2,6 +2,7 @@
 #include"Ryu.h"
 #include"Collision.h"
 #include"RunTimeObject.h"
+#include"ExplosionEffect.h"
 
 Enemy::Enemy()
 {
@@ -68,10 +69,13 @@ void Enemy::onIntersect(MovableRect * other)
 		//}
 	}
 
-	if (other->getCollisionType() == CT_WEAPON)
+	if (other->getCollisionType() == CT_WEAPON && getRenderActive())
 	{
 		//restoreLocation();
 		setRenderActive(false);
+		auto effect = new ExplosionEffect();
+		effect->setX(getMidX());
+		effect->setY(getMidY());
 	}
 
 	//if (other->getCollisionType() == CT_WEAPON)

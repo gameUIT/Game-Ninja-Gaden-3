@@ -11,6 +11,8 @@
 #include"Bird.h"
 #include"Panther.h"
 #include"Shooter.h"
+#include"Butterfly.h"
+#include"Item1.h"
 
 World * World::instance = 0;
 World * World::getInstance()
@@ -80,6 +82,14 @@ void World::Init(
 
 		case SPRITE_INFO_SHOOTER:
 			obj = new Shooter();
+			break;
+
+		case SPRITE_BUTTER_FLY:
+			obj = new Butterfly();
+			break;
+
+		case SPRITE_ITEM_1:
+			obj = new Item1();
 			break;
 
 		default:
@@ -209,7 +219,7 @@ void World::update(float dt)
 
 	List<RunTimeObject*>* runTimeObjects = RunTimeObject::getRunTimeObjects();
 
-	List<BaseObject*>* enemies = grid.getObjectCategories().at(CT_ENEMY);
+	List<BaseObject*>* allObjs = grid.getObjectCategories().at(CT_ALL);
 
 	//auto enemies = objectCategories.at(CT_ENEMY);
 
@@ -217,11 +227,13 @@ void World::update(float dt)
 	{
 		RunTimeObject* runTimeObject = runTimeObjects->at(ir);
 		runTimeObject->update(dt);
-		for (int ie = 0; ie < enemies->Count; ie++)
+		for (int ie = 0; ie < allObjs->Count; ie++)
 		{
-			auto enemy = enemies->at(ie);
+			auto enemy = allObjs->at(ie);
 			Collision::CheckCollision(runTimeObject, enemy);
 		}
+
+
 	}
 
 	/* xét va chạm cho các loại đối tượng với nhau */

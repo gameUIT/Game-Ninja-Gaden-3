@@ -53,7 +53,7 @@ void Bird::onUpdate(float dt)
 		auto r = GLOBALS_D("bird_r");
 
 		float dy = 0;
-		auto x = getX(), y = getY(), xr = ryu->getX(), yr = ryu->getY();
+		auto x = getX(), y = getY(), xr = ryu->getX() + 5, yr = ryu->getY() + 5;
 
 		auto deltax = x - xr, deltay = y - yr;
 

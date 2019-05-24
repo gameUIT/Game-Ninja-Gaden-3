@@ -53,6 +53,8 @@ List<BaseObject*> Grid::getCollisionObjects()
 			{
 				collisionObjects._Add(cells.at(i)->getObjects().at(j));
 				objectCategories.at(cells.at(i)->getObjects().at(j)->getCollisionType())->_Add(cells.at(i)->getObjects().at(j));
+				objectCategories.at(CT_ALL)->_Add(cells.at(i)->getObjects().at(j));
+				
 			}
 		}
 	}

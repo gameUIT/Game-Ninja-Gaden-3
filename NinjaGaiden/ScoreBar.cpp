@@ -1,14 +1,58 @@
 #include "ScoreBar.h"
-#include "Player.h"
-#include "SpriteManager.h"
+#include"Player.h"
 
 #define NUMBER_WIDTH 8
 #define HEALTH_WIDTH 4
+void ignoreLineIfstream(ifstream & fs, int lineCount);
 
-void ignoreLineIfstream(ifstream& fs, int lineCount);
 
-ScoreBar * ScoreBar::instance = 0;
-ScoreBar * ScoreBar::getInstance()
+void ScoreBar::renderNumber(int num, int x, int y, int maxLength)
+{
+	int currentX = x + NUMBER_WIDTH * maxLength;
+	int length = 0;
+	while (num)
+	{
+		currentX -= NUMBER_WIDTH;
+		int val = num % 10;
+		miscSprite->render(currentX, y, MISC_SPRITE_ID_NUMBER, val);
+		num /= 10;
+		length++;
+	}
+	for (; length < maxLength; length++)
+	{
+		currentX -= NUMBER_WIDTH;
+		miscSprite->render(currentX, y, MISC_SPRITE_ID_NUMBER, 0);
+	}
+}
+
+void ScoreBar::renderHealth()
+{
+	int healthLost = maxHealth - health;
+	int lastLocationXHealth = healthLocation.X + HEALTH_WIDTH * maxHealth - HEALTH_WIDTH;
+	for (size_t i = 0; i < healthLost; i++)
+	{
+		miscSprite->render(lastLocationXHealth, healthLocation.Y, MISC_SPRITE_ID_LOST_HEALTH, 0);
+		lastLocationXHealth -= HEALTH_WIDTH;
+	}
+}
+
+void ScoreBar::renderBossHealth()
+{
+	int healthLost = maxHealth - bossHealth;
+	if (healthLost > maxHealth)
+	{
+		healthLost = maxHealth;
+	}
+	int lastLocationXHealth = bossHealthLocation.X + HEALTH_WIDTH * maxHealth - HEALTH_WIDTH;
+	for (size_t i = 0; i < healthLost; i++)
+	{
+		miscSprite->render(lastLocationXHealth, bossHealthLocation.Y, MISC_SPRITE_ID_LOST_HEALTH, 0);
+		lastLocationXHealth -= HEALTH_WIDTH;
+	}
+}
+
+ScoreBar* ScoreBar::instance = 0;
+ScoreBar* ScoreBar::getInstance()
 {
 	if (instance == 0)
 		instance = new ScoreBar();
@@ -17,14 +61,14 @@ ScoreBar * ScoreBar::getInstance()
 
 ScoreBar::ScoreBar()
 {
-	//scoreBar = TEXTURE_MANAGER->Get(TEXTURE_SCOREBAR);
-	//scorebarItemSprite = GRAPHICS_ASSETS_MANAGER->getGraphicsAssets(SPRITE_INFO_SCOREBAR);
+	scoreBar = new GameTexture("assets/Sprites/Misc/score_bar.png", D3DCOLOR_XRGB(10, 20, 60));
+	miscSprite = SpriteManager::getInstance()->getSprite(SPRITE_MISC);
 	timeGame.init(1000);
 
-	ifstream ifs("Assets/GraphicsAssets/Scorebar/score_bar_item_location.txt");
+	ifstream ifs("assets/Sprites/Misc/score_bar_item_location.txt");
 	ignoreLineIfstream(ifs, 1);
 	ifs >> lifeLocation.X >> lifeLocation.Y >> lifeLocation.MaxLength;
-	setPlayerLife(3);
+	setPlayerLife(2);
 	setScore(0);
 
 	ignoreLineIfstream(ifs, 2);
@@ -52,80 +96,25 @@ ScoreBar::ScoreBar()
 	setHealth(maxHealth);
 	setBossHealth(maxHealth);
 	setTime(900);
+
+
 }
 
-void ScoreBar::renderNumber(int num, int x, int y, int maxLength)
+
+ScoreBar::~ScoreBar()
 {
-	int currentX = x + NUMBER_WIDTH * maxLength;
-	int length = 0;
-	while (num)
-	{
-		currentX -= NUMBER_WIDTH;
-		int val = num % 10;
-		scorebarItemSprite->render(currentX, y, SCOREBAR_ACTION_NUMBER, val);
-		num /= 10;
-		length++;
-	}
-	for (; length < maxLength; length++)
-	{
-		currentX -= NUMBER_WIDTH;
-		scorebarItemSprite->render(currentX, y, SCOREBAR_ACTION_NUMBER, 0);
-	}
 }
-
-void ScoreBar::renderHealth()
-{
-	int healthLost = maxHealth - health;
-	int lastLocationXHealth = healthLocation.X + HEALTH_WIDTH * maxHealth - HEALTH_WIDTH;
-	for (size_t i = 0; i < healthLost; i++)
-	{
-		scorebarItemSprite->render(lastLocationXHealth, healthLocation.Y, SCOREBAR_ACTION_LOST_HEART, 0);
-		lastLocationXHealth -= HEALTH_WIDTH;
-	}
-}
-
-void ScoreBar::renderBossHealth()
-{
-	int healthLost = maxHealth - bossHealth;
-	if (healthLost > maxHealth)
-	{
-		healthLost = maxHealth;
-	}
-	int lastLocationXHealth = bossHealthLocation.X + HEALTH_WIDTH * maxHealth - HEALTH_WIDTH;
-	for (size_t i = 0; i < healthLost; i++)
-	{
-		scorebarItemSprite->render(lastLocationXHealth, bossHealthLocation.Y, SCOREBAR_ACTION_LOST_HEART, 0);
-		lastLocationXHealth -= HEALTH_WIDTH;
-	}
-}
-
-void ScoreBar::renderSubWeapon()
-{
-	if (this->subWeapon != 0)
-	{
-		//this->subWeapon->getGraphicsAssets()->Render(subWeaponLocation.X,
-		//	subWeaponLocation.Y,
-		//	subWeapon->getAction(), 0);
-	}
-}
-
 
 void ScoreBar::render()
 {
-	GameDirectX::getInstance()->GetSprite()->Draw(scoreBar,
-		0,
-		&D3DXVECTOR3(0, 0, 0),
-		&D3DXVECTOR3(0, 0, 0),
-		D3DCOLOR_XRGB(255, 255, 255));
-
+	scoreBar->Render(0, 0, 0);
 	renderNumber(getPlayerLife(), lifeLocation.X, lifeLocation.Y, lifeLocation.MaxLength);
-	renderNumber(getHeartCount(), heartLocation.X, heartLocation.Y, heartLocation.MaxLength);
+	//renderNumber(getHeartCount(), heartLocation.X, heartLocation.Y, heartLocation.MaxLength);
 	renderNumber(currentStageNumber, stageLocation.X, stageLocation.Y, stageLocation.MaxLength);
 	renderNumber(score, scoreLocation.X, scoreLocation.Y, scoreLocation.MaxLength);
 	renderNumber(time, timeLocation.X, timeLocation.Y, timeLocation.MaxLength);
 	renderHealth();
 	renderBossHealth();
-	renderSubWeapon();
 }
 
 void ScoreBar::update()
@@ -133,13 +122,13 @@ void ScoreBar::update()
 	if (timeGame.atTime())
 	{
 		increaseTime(-1);
+		if (getTime() < 0)
+		{
+			//
+		}
 	}
 }
 
-void ScoreBar::setSubWeapon(BaseObject* subWeapon)
-{
-	this->subWeapon = subWeapon;
-}
 
 void ScoreBar::restoreHealth()
 {
@@ -185,11 +174,6 @@ void ScoreBar::increaseHeartCount(int heartCount)
 void ScoreBar::setCurrentStageNumber(int currentStageNumber)
 {
 	this->currentStageNumber = currentStageNumber;
-}
-
-int ScoreBar::getCurrentStageNumber()
-{
-	return this->currentStageNumber;
 }
 
 int ScoreBar::getScore()
@@ -249,8 +233,4 @@ void ScoreBar::increaseBossHealth(int health)
 int ScoreBar::getMaxHealth()
 {
 	return maxHealth;
-}
-
-ScoreBar::~ScoreBar()
-{
 }

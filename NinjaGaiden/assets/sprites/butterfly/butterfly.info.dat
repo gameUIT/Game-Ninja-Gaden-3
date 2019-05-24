@@ -1,0 +1,17 @@
+Sprite butterfly
+R	G	B
+255	0	128	128
+Animation Count
+1
+
+
+Name
+Animation
+Frame Count
+2
+
+FrameX		FrameY		FrameWidth		FrameHeight		AnchorX		AnchorY
+0			0			15				14				0			0
+15			3			12				11				0			0
+
+

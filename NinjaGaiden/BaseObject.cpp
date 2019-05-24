@@ -68,6 +68,10 @@ void BaseObject::onInitFromFile(ifstream& fs, int mapHeight)
 
 void BaseObject::update(float dt)
 {
+	if (!isAlive)
+	{
+		return;
+	}
 	/* chúng ta di chuyển đối tượng trước khi cập nhật */
 	goX();
 	goY();
@@ -101,6 +105,10 @@ void BaseObject::onUpdate(float dt)
 
 void BaseObject::render(Camera* camera)
 {
+	if (!isAlive)
+	{
+		return;
+	}
 	if (getSprite() == 0)
 		return;
 
@@ -197,15 +205,7 @@ void BaseObject::restoreLocation()
 	setIsAlive(true);
 }
 
-bool BaseObject::getIsAlive()
-{
-	return isAlive;
-}
 
-void BaseObject::setIsAlive(bool isAlive)
-{
-	this->isAlive = isAlive;
-}
 
 bool BaseObject::canRemoveFromCamera()
 {

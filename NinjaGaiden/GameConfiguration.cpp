@@ -35,8 +35,10 @@ double GameConfiguration::GetConfiguration(const char * key)
 		globalsConfigurationDouble->insert(pair<const char*, double>("player_hit_vx", 100));
 		globalsConfigurationDouble->insert(pair<const char*, double>("player_hit_vy", 150));
 		globalsConfigurationDouble->insert(pair<const char*, double>("player_blink_time", 10));
-		globalsConfigurationDouble->insert(pair<const char*, double>("player_blink_delay", 1000));
-
+		globalsConfigurationDouble->insert(pair<const char*, double>("player_blink_delay", 2000));
+		globalsConfigurationDouble->insert(pair<const char*, double>("player_invisible_delay", 1000));
+		globalsConfigurationDouble->insert(pair<const char*, double>("player_invisible_time", 30));
+		
 		/*  PANTHER  */
 		globalsConfigurationDouble->insert(pair<const char*, double>("panther_vx", 150));
 		globalsConfigurationDouble->insert(pair<const char*, double>("panther_vy_jump", 80));
@@ -46,7 +48,7 @@ double GameConfiguration::GetConfiguration(const char * key)
 		globalsConfigurationDouble->insert(pair<const char*, double>("swordman_vx", 80));
 		globalsConfigurationDouble->insert(pair<const char*, double>("swordman_distance_to_activate", 200));
 
-		globalsConfigurationDouble->insert(pair<const char*, double>("bird_r", 2));
+		globalsConfigurationDouble->insert(pair<const char*, double>("bird_r", 1));
 		globalsConfigurationDouble->insert(pair<const char*, double>("bird_visible", 200));
 		globalsConfigurationDouble->insert(pair<const char*, double>("bird_min_x", 10));
 		globalsConfigurationDouble->insert(pair<const char*, double>("bird_max_x", 50));
@@ -66,6 +68,7 @@ double GameConfiguration::GetConfiguration(const char * key)
 		globalsConfigurationDouble->insert(pair<const char*, double>("shooter_vx", 80));
 
 		globalsConfigurationDouble->insert(pair<const char*, double>("shooter_bullet_vx", 200));
+		
 
 	}
 	/* trả ra giá trị cấu hình tại key */

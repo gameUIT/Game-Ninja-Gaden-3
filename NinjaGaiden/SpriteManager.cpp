@@ -56,9 +56,18 @@ SpriteManager::SpriteManager()
 		, "assets/sprites/weapon/shooter_weapon/shooter_weapon.info.dat");
 	sprites[SPRITE_INFO_SHOOTER_WEAPON]->image->direction = RIGHT;
 
-	
 
-	
+	sprites[SPRITE_MISC]->InitFromFile("assets/sprites/Misc/misc.png", "assets/sprites/Misc/misc.info.txt");
+	sprites[SPRITE_MISC]->image->direction = RIGHT;
+
+	sprites[SPRITE_EXPLOSION]->InitFromFile("assets/sprites/explosion/image.png", "assets/sprites/explosion/explosion.info.dat");
+	sprites[SPRITE_EXPLOSION]->image->direction = RIGHT;
+
+	sprites[SPRITE_BUTTER_FLY]->InitFromFile("assets/sprites/butterfly/image.png", "assets/sprites/butterfly/butterfly.info.dat");
+	sprites[SPRITE_BUTTER_FLY]->image->direction = RIGHT;
+
+	sprites[SPRITE_ITEM_1]->InitFromFile("assets/sprites/items/item1/image.png", "assets/sprites/items/item1/item1.info.dat");
+	sprites[SPRITE_ITEM_1]->image->direction = RIGHT;
 
 }
 SpriteManager::~SpriteManager()
