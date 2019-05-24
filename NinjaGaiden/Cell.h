@@ -1,17 +1,15 @@
 #pragma once
-#include <vector>
-#include <iostream>
-#include "BaseObject.h"
+#include "Rect.h"
+#include"BaseObject.h"
 
-using namespace std;
-
-class Cell
+class Cell :
+	public Rect
 {
-	vector<BaseObject*> objects;
+	List<BaseObject*> objects;
 public:
-	vector<BaseObject*> getObjects();
+	List<BaseObject*> getObjects();
 	void add(BaseObject* object);
+	void clear();
 	Cell();
 	~Cell();
 };
-

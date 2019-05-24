@@ -3,20 +3,16 @@
 
 class Grid
 {
-	int widthLevel1, heightLevel1;
-	int rowCells, columnCells;
-	int cellWidth, cellHeight;
-	Cell** gridData;
-	vector<BaseObject*> allObjectsHaveToWork;
-	static Grid* instance;
-
+	List<Cell*> cells;
+	List<List<BaseObject*>*> objectCategories;
 public:
-	static Grid* getInstance();
-	void addObjectToGrid(BaseObject* object);
-	vector<BaseObject*> getAllObjectsInActiveCells();
-	//Hàm này đóng vai trò là bao chứa các object đã đang hoạt động trong camera và các object mới được camera quét qua
-	vector<BaseObject*> getAllObjectsHaveToWork();
+	void addObjectToGrid(BaseObject* object, int worldHeight);
+	List<BaseObject*> getCollisionObjects();
+	List<List<BaseObject*>*> getObjectCategories();
+	void Init(const char* gridPath);
+	void clearCells();
 	Grid();
 	~Grid();
 };
+
 

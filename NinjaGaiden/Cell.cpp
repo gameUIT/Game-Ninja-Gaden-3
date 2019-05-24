@@ -1,21 +1,25 @@
 #include "Cell.h"
+#include "Camera.h"
+#include "Collision.h"
 
-
-
-vector<BaseObject*> Cell::getObjects()
+List<BaseObject*> Cell::getObjects()
 {
-	return this->objects;
+	return objects;
 }
 
-void Cell::add(BaseObject * object)
+void Cell::add(BaseObject* object)
 {
-	objects.push_back(object);
+	objects._Add(object);
+}
+
+void Cell::clear()
+{
+	objects.Clear();
 }
 
 Cell::Cell()
 {
 }
-
 
 Cell::~Cell()
 {
