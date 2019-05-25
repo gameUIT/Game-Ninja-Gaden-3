@@ -20,21 +20,42 @@ void Grid::Init(const char* gridPath)
 
 void Grid::addObjectToGrid(BaseObject* object, int worldHeight)
 {
-	float objectXBottom = object->getX() + object->getWidth();
+	//float objectTopLeft = object->getX() + object->getWidth();
+	//float objectY = worldHeight - object->getY();
+	//float objectBottomRight = objectY + object->getHeight();
+
+	//for (size_t j = 0; j < cells.Count; j++) {
+	//	float cellTopLeft = cells.at(j)->getX() + cells.at(j)->getWidth();
+	//	float cellBottomRight = cells.at(j)->getY() + cells.at(j)->getHeight();
+
+	//	if ((object->getX() >= cells.at(j)->getX() && objectY >= cells.at(j)->getY())
+	//		&& ((objectTopLeft <= cellTopLeft && objectBottomRight <= cellBottomRight)
+	//		|| (object->getX() < cellTopLeft && object->getY() < cellBottomRight))
+	//		)
+	//	{
+	//		cells.at(j)->add(object);
+	//		break;
+	//	}
+	//}
+
+	float objectBottomRightX = object->getX() + object->getWidth();
 	float realYTop = worldHeight - object->getY();
-	float objectYBottom = realYTop + object->getHeight();
+	float ObjectBottomRightY = realYTop + object->getHeight();
+
 	for (size_t j = 0; j < cells.Count; j++) {
-		float rectXBottom = cells.at(j)->getX() + cells.at(j)->getWidth();
-		float rectYBottom = cells.at(j)->getY() + cells.at(j)->getHeight();
+		float cellBottomRightX = cells.at(j)->getX() + cells.at(j)->getWidth();
+		float cellBottomRightY = cells.at(j)->getY() + cells.at(j)->getHeight();
+
 		if ((object->getX() >= cells.at(j)->getX() && realYTop >= cells.at(j)->getY())
-			&& ((objectXBottom <= rectXBottom && objectYBottom <= rectYBottom)
-				|| (object->getX() < rectXBottom && object->getY() < rectYBottom))
+			&& ((objectBottomRightX <= cellBottomRightX && ObjectBottomRightY <= cellBottomRightY)
+				|| (object->getX() < cellBottomRightX && object->getY() < cellBottomRightY))
 			)
 		{
 			cells.at(j)->add(object);
 			break;
 		}
 	}
+
 }
 
 List<BaseObject*> Grid::getCollisionObjects()

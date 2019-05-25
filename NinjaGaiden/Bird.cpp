@@ -19,15 +19,11 @@ void Bird::setState(BIRD_STATE state)
 
 void Bird::onCollision(MovableRect * other, float collisionTime, int nx, int ny)
 {
-	//Enemy::onCollision(other, collisionTime, nx, ny);
+
 }
 
 void Bird::onIntersect(MovableRect * other)
 {
-	//if (other->getCollisionType() == CT_WEAPON)
-	//{
-	//	this->setAlive(false);
-	//}
 	Enemy::onIntersect(other);
 }
 

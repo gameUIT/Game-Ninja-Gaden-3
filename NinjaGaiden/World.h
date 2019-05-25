@@ -4,7 +4,6 @@
 #include"BaseObject.h"
 #include"CollisionTypeCollide.h"
 #include"Space.h"
-#include"Grid.h"
 
 enum WORLD_STATE
 {
@@ -17,11 +16,10 @@ class World
 	Tilemap tilemap;
 	List<BaseObject*> allObjects;
 	List<CollisionTypeCollide*> collisionTypeCollides;
-	//List<List<BaseObject*>*> objectCategories;
+	List<List<BaseObject*>*> objectCategories;
+
 	List<Space*> spaces;
 	Space* currentSpace;
-
-	Grid grid;
 
 	static World* instance;
 
@@ -29,19 +27,21 @@ public:
 	WORLD_STATE worldState;
 	static World* getInstance();
 	void Init(
-		const char* tilesheetPath, 
-		const char* matrixPath, 
+		const char* tilesheetPath,
+		const char* matrixPath,
 		const char* objectsPath,
 		const char* collisionTypeCollidePath,
-		const char* spacePath,
-		const char * gridPath);
+		const char* spacePath);
 	void Init(const char* folderPath);
 
 	void update(float dt);
+
 	void render();
+
 	void setCurrentSpace(int spaceIndex);
 
 	Space* getCurrentSpace();
+
 	/* reset vị trí camera & ryu trong space */
 	void resetLocationInSpace();
 

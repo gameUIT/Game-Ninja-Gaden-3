@@ -5,6 +5,7 @@ class ShooterBullet
 {
 public:
 	void onUpdate(float dt) override;
+	void onIntersect(MovableRect* other) override;
 	ShooterBullet();
 	~ShooterBullet();
 };

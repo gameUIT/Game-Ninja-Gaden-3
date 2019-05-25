@@ -33,10 +33,6 @@ void Banshee::onCollision(MovableRect * other, float collisionTime, int nx, int 
 
 void Banshee::onIntersect(MovableRect * other)
 {
-	//if (other->getCollisionType() == CT_WEAPON)
-	//{
-	//	this->setAlive(false);
-	//}
 	Enemy::onIntersect(other);
 }
 

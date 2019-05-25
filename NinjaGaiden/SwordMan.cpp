@@ -21,10 +21,6 @@ void SwordMan::onCollision(MovableRect * other, float collisionTime, int nx, int
 
 void SwordMan::onIntersect(MovableRect * other)
 {
-	//if (other->getCollisionType() == CT_WEAPON)
-	//{
-	//	this->setAlive(false);
-	//}
 	Enemy::onIntersect(other);
 }
 

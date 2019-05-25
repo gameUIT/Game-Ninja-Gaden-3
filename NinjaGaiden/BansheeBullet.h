@@ -8,6 +8,7 @@ public:
 	BansheeBullet();
 	~BansheeBullet();
 	void onUpdate(float dt) override;
+	void onIntersect(MovableRect* other) override;
 	void render(Camera* camera);
 };
 

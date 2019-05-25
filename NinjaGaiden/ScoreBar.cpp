@@ -96,8 +96,6 @@ ScoreBar::ScoreBar()
 	setHealth(maxHealth);
 	setBossHealth(maxHealth);
 	setTime(900);
-
-
 }
 
 

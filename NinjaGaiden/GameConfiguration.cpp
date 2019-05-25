@@ -23,7 +23,6 @@ double GameConfiguration::GetConfiguration(const char * key)
 		/* frame_per_second */
 		globalsConfigurationDouble->insert(pair<const char*, double>("fps", 70));
 
-		/* thời gian đổi frame mặc định của animation là 100 milis, cứ sau 120 milis thì animation sẽ đổi 1 frame */
 		globalsConfigurationDouble->insert(pair<const char*, double>("object_animation_time_default", 120));
 
 		/* trọng lực mặc định của đối tượng 80 (px/s^2) */
@@ -32,7 +31,7 @@ double GameConfiguration::GetConfiguration(const char * key)
 		/* PLAYER */
 		globalsConfigurationDouble->insert(pair<const char*, double>("player_vx", 110));
 		globalsConfigurationDouble->insert(pair<const char*, double>("player_vy_jump", 280)); //280
-		globalsConfigurationDouble->insert(pair<const char*, double>("player_hit_vx", 100));
+		globalsConfigurationDouble->insert(pair<const char*, double>("player_hit_vx", 80)); //100
 		globalsConfigurationDouble->insert(pair<const char*, double>("player_hit_vy", 150));
 		globalsConfigurationDouble->insert(pair<const char*, double>("player_blink_time", 10));
 		globalsConfigurationDouble->insert(pair<const char*, double>("player_blink_delay", 2000));
@@ -61,7 +60,7 @@ double GameConfiguration::GetConfiguration(const char * key)
 		globalsConfigurationDouble->insert(pair<const char*, double>("banshee_weapon_vx", 80));
 		globalsConfigurationDouble->insert(pair<const char*, double>("banshee_weapon_vy", 130));
 
-		globalsConfigurationDouble->insert(pair<const char*, double>("shooter_run_delay", 2000));
+		globalsConfigurationDouble->insert(pair<const char*, double>("shooter_run_delay", 1000));
 		globalsConfigurationDouble->insert(pair<const char*, double>("shooter_delta_activ", 100));
 		globalsConfigurationDouble->insert(pair<const char*, double>("shooter_fire_delay", 1000));
 		globalsConfigurationDouble->insert(pair<const char*, double>("shooter_fire_time", 300));

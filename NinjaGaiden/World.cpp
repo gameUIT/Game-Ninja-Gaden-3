@@ -14,6 +14,7 @@
 #include"Butterfly.h"
 #include"Item1.h"
 
+
 World * World::instance = 0;
 World * World::getInstance()
 {
@@ -25,16 +26,15 @@ void World::Init(
 	const char* matrixPath,
 	const char* objectsPath,
 	const char* collisionTypeCollidePath,
-	const char* spacePath,
-	const char* gridPath)
+	const char* spacePath)
 {
 	/* khởi tạo vị trí player */
-	Ryu* ryu = Ryu::getInstance();
-	ryu->set(52, 100, 16, 30);
+	Ryu::getInstance()->set(52, 100, 16, 30);
 
 	Rect* ryuInitBox = new Rect();
 	ryuInitBox->set(52, 100, 16, 30);
-	ryu->setInitBox(ryuInitBox);
+
+	Ryu::getInstance()->setInitBox(ryuInitBox);
 
 	/* khởi tạo tilemap */
 	tilemap.Init(tilesheetPath, matrixPath);
@@ -42,10 +42,10 @@ void World::Init(
 	int worldHeight = tilemap.getWorldHeight();
 
 	/* khởi tạo phân loại đối tượng */
-	//for (size_t i = 0; i < COLLISION_TYPE_COUNT; i++)
-	//{
-	//	objectCategories._Add(new List<BaseObject*>());
-	//}
+	for (size_t i = 0; i < COLLISION_TYPE_COUNT; i++)
+	{
+		objectCategories._Add(new List<BaseObject*>());
+	}
 
 	/* khởi tạo đối tượng */
 	int objectCount;
@@ -84,6 +84,7 @@ void World::Init(
 			obj = new Shooter();
 			break;
 
+
 		case SPRITE_BUTTER_FLY:
 			obj = new Butterfly();
 			break;
@@ -100,12 +101,14 @@ void World::Init(
 		obj->onInitFromFile(fs, worldHeight);
 		if (id >= 0)
 		{
+			/* nếu id đối tượng không âm tức đối tượng có sprite ta gán sprite cho nó */
 			obj->setSprite(SPR(id));
 		}
+		/* thêm đối tượng vào danh sách */
 		allObjects._Add(obj);
 
 		/* thêm object vào từng loại đối tượng */
-		//objectCategories.at(obj->getCollisionType())->_Add(obj);
+		objectCategories.at(obj->getCollisionType())->_Add(obj);
 	}
 
 	/* đọc collision type collide */
@@ -125,17 +128,21 @@ void World::Init(
 	/* đọc space */
 	int numberOfSpaces = 0;
 	ifstream fsSpace(spacePath);
+	/* enter 1 dòng */
 	ignoreLineIfstream(fsSpace, 1);
 	fsSpace >> numberOfSpaces;
 	for (size_t i = 0; i < numberOfSpaces; i++)
 	{
+		/* enter 4 dòng */
 		ignoreLineIfstream(fsSpace, 4);
 		Space* space = new Space();
 		fsSpace >> space->X >> space->Y >> space->Width >> space->Height;
 
+		/* enter 2 dòng */
 		ignoreLineIfstream(fsSpace, 2);
 		fsSpace >> space->CameraX >> space->CameraY;
 
+		/* enter 2 dòng */
 		ignoreLineIfstream(fsSpace, 2);
 		fsSpace >> space->PlayerX >> space->PlayerY;
 
@@ -151,9 +158,6 @@ void World::Init(
 	/* bắt đầu từ space 0 */
 	setCurrentSpace(0);
 	resetLocationInSpace();
-
-	/* đọc grid */
-	grid.Init(gridPath);
 }
 
 void World::Init(const char * folderPath)
@@ -176,64 +180,60 @@ void World::Init(const char * folderPath)
 	string spacePath = folderPathString;
 	spacePath.append("/spaces.dat");
 
-	string gridPath = folderPathString;
-	gridPath.append("/grid.dat");
-
 	Init(
 		tilesheetString.c_str(),
 		matrixPathString.c_str(),
 		objectPathString.c_str(),
 		collisionTypeCollidePath.c_str(),
-		spacePath.c_str(),
-		gridPath.c_str());
+		spacePath.c_str());
 
 }
 
 void World::update(float dt)
 {
 	Ryu* ryu = Ryu::getInstance();
+
 	KEY::getInstance()->update();
 
-	int worldHeight = tilemap.getWorldHeight();
-	grid.clearCells();
 	for (size_t i = 0; i < allObjects.Count; i++)
 	{
-		grid.addObjectToGrid(allObjects[i], worldHeight);
+		/* cập nhật đối tượng */
+		allObjects[i]->update(dt);
+		Collision::CheckCollision(Ryu::getInstance(), allObjects[i]);
+		Collision::CheckCollision(allObjects[i], Ryu::getInstance());
 	}
-	List<BaseObject*> collisionObjects = grid.getCollisionObjects();
-	for (size_t i = 0; i < collisionObjects.Count; i++)
-	{
-		collisionObjects[i]->update(dt);
-		Collision::CheckCollision(ryu, collisionObjects[i]);
-	}
-
-	//for (size_t i = 0; i < allObjects.Count; i++)
-	//{
-	//	/* cập nhật đối tượng */
-	//	allObjects[i]->update(dt);
-	//	Collision::CheckCollision(Ryu::getInstance(), allObjects[i]);
-	//	Collision::CheckCollision(allObjects[i], Ryu::getInstance());
-	//}
 
 	RunTimeObject::updateRuntimeObjects();
 
 	List<RunTimeObject*>* runTimeObjects = RunTimeObject::getRunTimeObjects();
 
-	List<BaseObject*>* allObjs = grid.getObjectCategories().at(CT_ALL);
-
-	//auto enemies = objectCategories.at(CT_ENEMY);
+	List<BaseObject*>* enemies = objectCategories.at(CT_ENEMY);
+	List<BaseObject*>* miscs = objectCategories.at(CT_MISC);
+	List<BaseObject*>* items = objectCategories.at(CT_ITEM);
+	//List<BaseObject*>* allObjects = objectCategories.at(CT_ALL);
 
 	for (int ir = 0; ir < runTimeObjects->Count; ir++)
 	{
-		RunTimeObject* runTimeObject = runTimeObjects->at(ir);
+		auto runTimeObject = runTimeObjects->at(ir);
 		runTimeObject->update(dt);
-		for (int ie = 0; ie < allObjs->Count; ie++)
+
+		for (int ie = 0; ie < enemies->Count; ie++)
 		{
-			auto enemy = allObjs->at(ie);
+			auto enemy = enemies->at(ie);
 			Collision::CheckCollision(runTimeObject, enemy);
 		}
 
+		for (int ie = 0; ie < miscs->Count; ie++)
+		{
+			auto misc = miscs->at(ie);
+			Collision::CheckCollision(runTimeObject, misc);
+		}
 
+		for (int ie = 0; ie < items->Count; ie++)
+		{
+			auto item = items->at(ie);
+			Collision::CheckCollision(runTimeObject, item);
+		}
 	}
 
 	/* xét va chạm cho các loại đối tượng với nhau */
@@ -242,15 +242,10 @@ void World::update(float dt)
 		COLLISION_TYPE col1 = collisionTypeCollides.at(i)->COLLISION_TYPE_1;
 		COLLISION_TYPE col2 = collisionTypeCollides.at(i)->COLLISION_TYPE_2;
 
-		///* danh sách đối tượng thuộc collision type 1 */
-		//List<BaseObject*>* collection1 = objectCategories.at(col1);
-
-		///* danh sách đối tượng thuộc collision type 2 */
-		//List<BaseObject*>* collection2 = objectCategories.at(col2);
-
-		List<BaseObject*>* collection1 = grid.getObjectCategories().at(col1);
-		List<BaseObject*>* collection2 = grid.getObjectCategories().at(col2);
-
+		/* danh sách đối tượng thuộc collision type 1 */
+		List<BaseObject*>* collection1 = objectCategories.at(col1);
+		/* danh sách đối tượng thuộc collision type 2 */
+		List<BaseObject*>* collection2 = objectCategories.at(col2);
 
 		for (size_t i1 = 0; i1 < collection1->size(); i1++)
 		{
@@ -271,7 +266,7 @@ void World::render()
 {
 	tilemap.render(Camera::getInstance());
 
-	auto runTimeObjects = RunTimeObject::getRunTimeObjects();
+	List<RunTimeObject*>* runTimeObjects = RunTimeObject::getRunTimeObjects();
 
 	for (int ir = 0; ir < runTimeObjects->Count; ir++)
 	{

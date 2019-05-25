@@ -4,6 +4,7 @@
 Butterfly::Butterfly()
 {
 	setCollisionType(COLLISION_TYPE::CT_MISC);
+	setDirection(RIGHT);
 }
 
 void Butterfly::onCollision(MovableRect* other, float collisionTime, int nx, int ny)

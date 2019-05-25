@@ -1,5 +1,6 @@
 #include "BansheeBullet.h"
 #include"SpriteManager.h"
+#include"Ryu.h"
 
 
 void BansheeBullet::onCollision(MovableRect * other, float collisionTime, int nx, int ny)
@@ -16,11 +17,22 @@ BansheeBullet::BansheeBullet()
 
 BansheeBullet::~BansheeBullet()
 {
+
 }
 
 void BansheeBullet::onUpdate(float dt)
 {
 	RunTimeObject::onUpdate(dt);
+}
+
+void BansheeBullet::onIntersect(MovableRect * other)
+{
+	if (other->getCollisionType() == CT_PLAYER)
+	{
+		Ryu* ryu = Ryu::getInstance();
+		ryu->blinkDelay.start();
+		ryu->setVy(GLOBALS_D("player_hit_vy"));
+	}
 }
 
 void BansheeBullet::render(Camera * camera)

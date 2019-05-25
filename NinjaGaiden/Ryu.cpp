@@ -34,9 +34,14 @@ void Ryu::onUpdate(float dt)
 {
 	if (this->getTop() < Camera::getInstance()->getBottom())
 	{
+		ScoreBar* scoreBar = ScoreBar::getInstance();
+		scoreBar->restoreHealth();
+		scoreBar->increasePlayerLife(-1);
+
 		restoreLocation();
 		Camera::getInstance()->setX(World::getInstance()->getCurrentSpace()->CameraX);
 		Camera::getInstance()->setY(World::getInstance()->getCurrentSpace()->CameraY);
+
 		return;
 	}
 
@@ -68,9 +73,6 @@ void Ryu::onUpdate(float dt)
 			return;
 		}
 	}
-
-
-
 
 	KEY* key = KEY::getInstance();
 	bool keyLeftDown, keyRightDown, keyUpDown, keyDownDown, keyJumpPress, keyAttackPress;
@@ -148,19 +150,32 @@ void Ryu::onUpdate(float dt)
 		}
 		else /* Nhân vật đang lơ lửng trên không */
 		{
+			if (keyAttackPress)
+			{
+				//setAnimation(RYU_ANIMATION_ATTACK_JUMP);
+				if (getDirection() == LEFT)
+				{
+					setAnimation(RYU_ANIMATION_ATTACK_STAND_LEFT);
+				}
+				else
+				{
+					setAnimation(RYU_ANIMATION_ATTACK_STAND_RIGHT);
+				}
+				createNewSword();
+			}
 
-			if (keyLeftDown)
+			if (keyLeftDown && getAnimation() != RYU_ANIMATION_ATTACK_STAND_RIGHT)
 			{
 				setDirection(LEFT);
 				setVx(getDirection() * vx);
 			}
-			else if (keyRightDown)
+			else if (keyRightDown && getAnimation() != RYU_ANIMATION_ATTACK_STAND_LEFT)
 			{
 				setDirection(RIGHT);
 				setVx(getDirection() * vx);
 			}
 
-			if (getAnimation() == RYU_ANIMATION_ATTACK_JUMP)
+			if (getAnimation() == RYU_ANIMATION_ATTACK_STAND_RIGHT || getAnimation() == RYU_ANIMATION_ATTACK_STAND_LEFT)
 			{
 				if (getIsLastFrameAnimationDone())
 				{
@@ -172,13 +187,7 @@ void Ryu::onUpdate(float dt)
 				setAnimation(RYU_ANIMATION_JUMP);
 			}
 
-			if (keyAttackPress)
-			{
-				setAnimation(RYU_ANIMATION_ATTACK_JUMP);
-				createNewSword();
-				//setState(RYU_STATE_ATTACK);
-				//setAnimation(RYU_ANIMATION_ATTACK_JUMP);
-			}
+
 		}
 
 		PhysicsObject::onUpdate(dt);
@@ -284,26 +293,7 @@ void Ryu::onUpdate(float dt)
 					}
 					break;
 				}
-
-				//setAnimation(RYU_ANIMATION_ATTACK_STAND);
-
-				//if (getIsLastFrameAnimationDone())
-				//{
-				//	setState(RYU_STATE_NORMAL);
-				//	setAnimation(RYU_ANIMATION_STAND);
-				//}
 			}
-		}
-		else /* ryu đang nhảy */
-		{
-			//setVx(getDirection() * vx);
-			setAnimation(RYU_ANIMATION_ATTACK_JUMP);
-
-			//if (getIsLastFrameAnimationDone())
-			//{
-			//	setState(RYU_STATE_NORMAL);
-			//	setAnimation(RYU_ANIMATION_JUMP);
-			//}
 		}
 
 		PhysicsObject::onUpdate(dt);
@@ -333,10 +323,13 @@ void Ryu::onIntersect(MovableRect* other)
 {
 	if (other->getCollisionType() == CT_ENEMY && !blinkDelay.isOnTime() && ((Enemy*)other)->getRenderActive())
 	{
+		KEY* key = KEY::getInstance();
+
 		blinkDelay.start();
 		isHit = true;
 		setVy(GLOBALS_D("player_hit_vy"));
 		setVx(-getDirection() * GLOBALS_D("player_hit_vx"));
+
 		ScoreBar::getInstance()->setHealth(ScoreBar::getInstance()->getHealth() - 1);
 	}
 }
@@ -355,12 +348,11 @@ void Ryu::createNewSword()
 	}
 	else
 	{
-		sword->setX(getleft() - 10);
+		sword->setX(getleft() - 20);
 	}
 
 	sword->setY(getTop() + 10);
-	//sword->setY(getMidY());
-	sword->setWidth(24);
+	sword->setWidth(30);
 	sword->setHeight(30);
 }
 

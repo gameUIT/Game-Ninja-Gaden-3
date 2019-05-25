@@ -3,6 +3,7 @@
 #include"Collision.h"
 #include"RunTimeObject.h"
 #include"ExplosionEffect.h"
+#include"ScoreBar.h"
 
 Enemy::Enemy()
 {
@@ -28,6 +29,13 @@ void Enemy::onUpdate(float dt)
 	{
 		onIntersect(ryu);
 	}
+
+	//if (this->getTop() < Camera::getInstance()->getBottom() && (abs(this->getInitBox()->getX() - this->getX() >= 350)))
+	//{
+	//	setRenderActive(false);
+	//	setIsAlive(false);
+	//	restoreLocation();
+	//}
 
 	PhysicsObject::onUpdate(dt);
 }
@@ -61,32 +69,24 @@ void Enemy::onIntersect(MovableRect * other)
 	if (other == ryu && !ryu->blinkDelay.isOnTime() && canAttackPlayer() && !ryu->isDead)
 	{
 		onCollisionWithPlayer();
-		//ScoreBar::getInstance()->increaseHealth(-1);
-		//if (ScoreBar::getInstance()->getHealth() <= 0)
-		//{
-		//	simon->isDead = true;
-		//	simon->deadDelay.start();
-		//}
 	}
 
 	if (other->getCollisionType() == CT_WEAPON && getRenderActive())
 	{
-		//restoreLocation();
-		setRenderActive(false);
+		//setRenderActive(false);
+		setIsAlive(false);
 		auto effect = new ExplosionEffect();
 		effect->setX(getMidX());
 		effect->setY(getMidY());
-	}
 
-	//if (other->getCollisionType() == CT_WEAPON)
-	//{
-	//	((MorningStarAttack*)other)->setNeedDelete(true);
-	//	onContactWeapon();
-	//}
+		ScoreBar::getInstance()->setScore(ScoreBar::getInstance()->getScore() + 100);
+	}
 }
 
 void Enemy::restoreLocation()
 {
+	setIsAlive(true);
+	setRenderActive(true);
 	setHealth(1);
 	BaseObject::restoreLocation();
 }
@@ -105,6 +105,14 @@ void Enemy::onCollisionWithPlayer()
 	Camera* camera = Camera::getInstance();
 	ryu->blinkDelay.start();
 	ryu->setVy(GLOBALS_D("player_hit_vy"));
+
+	ScoreBar::getInstance()->setHealth(ScoreBar::getInstance()->getHealth() - 1);
+	if (ScoreBar::getInstance()->getHealth() <= 0)
+	{
+		ryu->isDead = true;
+		//ryu->deadDelay.start();
+	}
+
 	//ryu->setVx(-(getDirection() * GLOBALS_D("player_hit_vx")));
 
 	//ryu->blinkDelay.setIsTerminated(true);
