@@ -21,9 +21,9 @@ class World
 	List<Space*> spaces;
 	Space* currentSpace;
 
-	static World* instance;
 
 public:
+	static World* instance;
 	WORLD_STATE worldState;
 	static World* getInstance();
 	void Init(

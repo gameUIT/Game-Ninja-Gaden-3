@@ -51,6 +51,14 @@ void ScoreBar::renderBossHealth()
 	}
 }
 
+void ScoreBar::renderSubweapon()
+{
+	if (this->enableSubWeapon)
+	{
+		miscSprite->render(135, 20, MISC_SPRITE_ID_SHURIKEN_BIG, 0);
+	}
+}
+
 ScoreBar* ScoreBar::instance = 0;
 ScoreBar* ScoreBar::getInstance()
 {
@@ -96,6 +104,10 @@ ScoreBar::ScoreBar()
 	setHealth(maxHealth);
 	setBossHealth(maxHealth);
 	setTime(900);
+
+	enableSubWeapon = NULL;
+
+	this->enableSubWeapon = false;
 }
 
 
@@ -113,6 +125,8 @@ void ScoreBar::render()
 	renderNumber(time, timeLocation.X, timeLocation.Y, timeLocation.MaxLength);
 	renderHealth();
 	renderBossHealth();
+
+	renderSubweapon();
 }
 
 void ScoreBar::update()
@@ -125,6 +139,11 @@ void ScoreBar::update()
 			//
 		}
 	}
+}
+
+void ScoreBar::enableSubweapon()
+{
+	this->enableSubWeapon = true;
 }
 
 

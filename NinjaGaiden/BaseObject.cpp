@@ -185,6 +185,8 @@ void BaseObject::setInitBox(Rect * initBox)
 	this->initBox = initBox;
 }
 
+
+
 void BaseObject::setRenderActive(bool renderActive)
 {
 	this->renderActive = renderActive;

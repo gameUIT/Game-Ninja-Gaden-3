@@ -69,6 +69,9 @@ SpriteManager::SpriteManager()
 	sprites[SPRITE_ITEM_1]->InitFromFile("assets/sprites/items/item1/image.png", "assets/sprites/items/item1/item1.info.dat");
 	sprites[SPRITE_ITEM_1]->image->direction = RIGHT;
 
+	sprites[SPRITE_ITEM_SHURIKEN_BIG]->InitFromFile("assets/sprites/weapon/shuriken_small/image.png", "assets/sprites/weapon/shuriken_small/shuriken_small.info.dat");
+	sprites[SPRITE_ITEM_SHURIKEN_BIG]->image->direction = RIGHT;
+	
 }
 SpriteManager::~SpriteManager()
 {

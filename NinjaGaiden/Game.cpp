@@ -1,5 +1,6 @@
 #include "Game.h"
 #include"ScoreBar.h"
+#include"KEY.h"
 
 Game * Game::instance = 0;
 Game * Game::getInstance()
@@ -13,12 +14,20 @@ Game * Game::getInstance()
 void Game::GameInit()
 {
 	/* khởi tạo tilemap */
-	world = new World();
-	world->Init("assets/levels/level3_1");
+	world1 = new World();
+	world1->Init("assets/levels/level3_1");
 
 	Camera::getInstance()->setSize(
 		GLOBALS_D("backbuffer_width"),
 		GLOBALS_D("backbuffer_height"));
+
+	world2 = new World();
+	world2->Init("assets/levels/level3_2");
+
+	world = world1;
+
+	World::instance = world1;
+
 
 
 	//Camera::getInstance()->set(
@@ -31,6 +40,12 @@ void Game::GameInit()
 /* Các câu lệnh cập nhật game */
 void Game::GameUpdate(float dt)
 {
+	if (KEY::getInstance()->isKeyMap2Down)
+	{
+		world = world2;
+		World::instance = world2;
+		World::instance->resetLocationInSpace();
+	}
 	/* cập nhật đối tượng trong world */
 	world->update(dt);
 	ScoreBar::getInstance()->update();

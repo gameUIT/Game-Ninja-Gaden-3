@@ -5,9 +5,10 @@
 #include"Collision.h"
 #include"Enemy.h"
 #include"ScoreBar.h"
+#include"ShurikenBig.h"
 
-Ryu * Ryu::instance = 0;
-Ryu * Ryu::getInstance()
+Ryu* Ryu::instance = 0;
+Ryu* Ryu::getInstance()
 {
 	if (instance == 0)
 	{
@@ -28,6 +29,7 @@ Ryu::Ryu()
 	invisibleDelay.init(GLOBALS_D("player_invisible_delay"));
 	invisibleTime.init(GLOBALS_D("player_invisible_time"));
 	isHit = false;
+	stair = NULL;
 }
 
 void Ryu::onUpdate(float dt)
@@ -88,6 +90,52 @@ void Ryu::onUpdate(float dt)
 
 	switch (state)
 	{
+	case RYU_STATE_STAIR:
+		setPhysicsEnable(false);
+		setAnimation(RYU_ANIMATION_CLIMBING);
+		setVx(0);
+		setDx(0);
+		if (keyUpDown)
+		{
+			if (getTop() < stair->getTop())
+			{
+				setDy(2);
+				setPauseAnimation(false);
+			}
+			else
+			{
+				setDy(0);
+			}
+		}
+		else if (keyDownDown)
+		{
+			setDy(-2);
+			setPauseAnimation(false);
+			if (getIsGrounded())
+			{
+				setState(RYU_STATE_NORMAL);
+				setPhysicsEnable(true);
+				stair = 0;
+				setPauseAnimation(false);
+			}
+		}
+		else
+		{
+			setFrameAnimation(0);
+			setPauseAnimation(true);
+			setDy(0);
+		}
+
+		if (keyLeftDown && keyJumpPress)
+		{
+			setState(RYU_STATE_NORMAL);
+			setPhysicsEnable(true);
+			stair = 0;
+			setVy(vy);
+			setPauseAnimation(false);
+		}
+
+		break;
 	case RYU_STATE_NORMAL:
 		if (getIsGrounded())
 		{
@@ -126,7 +174,7 @@ void Ryu::onUpdate(float dt)
 
 					setState(RYU_STATE_ATTACK);
 
-				}  
+				}
 			}
 			else if (keyDownDown)
 			{
@@ -134,9 +182,19 @@ void Ryu::onUpdate(float dt)
 			}
 			else if (keyAttackPress)
 			{
-				createNewSword();
+				if (keyUpDown && ScoreBar::getInstance()->enableSubWeapon)
+				{
+					ShurikenBig* weapon = new ShurikenBig();
+					weapon->setX(this->getMidX());
+					weapon->setY(this->getY() - 5);
+					weapon->setDx(getDirection() * GLOBALS_D("SHURIKENBIG_DX"));
+				}
+				else
+				{
+					createNewSword();
+					setState(RYU_STATE_ATTACK);
+				}
 
-				setState(RYU_STATE_ATTACK);
 			}
 			else
 			{
@@ -147,6 +205,9 @@ void Ryu::onUpdate(float dt)
 			{
 				setVy(vy);
 			}
+
+
+
 		}
 		else /* Nhân vật đang lơ lửng trên không */
 		{
@@ -166,13 +227,27 @@ void Ryu::onUpdate(float dt)
 
 			if (keyLeftDown && getAnimation() != RYU_ANIMATION_ATTACK_STAND_RIGHT)
 			{
-				setDirection(LEFT);
-				setVx(getDirection() * vx);
+				if (getDirection() == RIGHT)
+				{
+					//setDirection(LEFT);
+					setVx(-35);
+				}
+				else
+				{
+					setVx(getDirection() * vx);
+				}
 			}
 			else if (keyRightDown && getAnimation() != RYU_ANIMATION_ATTACK_STAND_LEFT)
 			{
-				setDirection(RIGHT);
-				setVx(getDirection() * vx);
+				if (getDirection() == LEFT)
+				{
+					//setDirection(RIGHT);
+					setVx(35);
+				}
+				else
+				{
+					setVx(getDirection() * vx);
+				}
 			}
 
 			if (getAnimation() == RYU_ANIMATION_ATTACK_STAND_RIGHT || getAnimation() == RYU_ANIMATION_ATTACK_STAND_LEFT)
@@ -305,9 +380,17 @@ void Ryu::onUpdate(float dt)
 	PhysicsObject::onUpdate(dt);
 }
 
-void Ryu::onCollision(MovableRect * other, float collisionTime, int nx, int ny)
+void Ryu::onCollision(MovableRect* other, float collisionTime, int nx, int ny)
 {
-	if (other->getCollisionType() == CT_GROUND)
+	if (getState() == RYU_STATE::RYU_STATE_STAIR && stair != 0)
+	{
+		if (getBottom() - stair->getBottom() > 16)
+		{
+			return;
+		}
+	}
+
+	if (other->getCollisionType() == CT_GROUND && ny != -1)
 	{
 		PhysicsObject::onCollision(other, collisionTime, nx, ny);
 		preventMovementOnCollision(collisionTime, nx, ny);
@@ -321,6 +404,7 @@ void Ryu::onCollision(MovableRect * other, float collisionTime, int nx, int ny)
 
 void Ryu::onIntersect(MovableRect* other)
 {
+	
 	if (other->getCollisionType() == CT_ENEMY && !blinkDelay.isOnTime() && ((Enemy*)other)->getRenderActive())
 	{
 		KEY* key = KEY::getInstance();

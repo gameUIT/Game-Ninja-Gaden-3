@@ -56,8 +56,6 @@ public:
 	Rect* getInitBox();
 	void setInitBox(Rect* initBox);
 
-
-
 	void setRenderActive(bool renderActive);
 	bool getRenderActive();
 

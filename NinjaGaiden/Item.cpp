@@ -22,6 +22,7 @@ void Item::onIntersect(MovableRect* other)
 		if (other == Ryu::getInstance())
 		{
 			setIsAlive(false);
+			onContactPlayer();
 		}
 	}
 	
@@ -33,4 +34,8 @@ void Item::onCollision(MovableRect* other, float collisionTime, int nx, int ny)
 	{
 		preventMovementOnCollision(collisionTime, nx, ny);
 	}
+}
+
+void Item::onContactPlayer()
+{
 }

@@ -10,6 +10,8 @@
 enum SPRITE_INFO
 {
 	/* đối tượng không có hình ảnh ta sẽ đặt số âm */
+	SPRITE_INFO_STAIR = -3,
+	SPRITE_INFO_SHURIKEN_ITEM = -2,
 	SPRITE_INFO_GROUND = -1,
 
 	/* đối tượng có hình ảnh ta sẽ đặt số dương */
@@ -26,6 +28,7 @@ enum SPRITE_INFO
 	SPRITE_EXPLOSION = 11,
 	SPRITE_BUTTER_FLY = 12,
 	SPRITE_ITEM_1 = 13,
+	SPRITE_ITEM_SHURIKEN_BIG = 14,
 
 	SPRITE_COUNT
 };
@@ -57,6 +60,7 @@ enum MISC_SPRITE_ID
 	MISC_SPRITE_ID_ITEM_1000PTS,
 	MISC_SPRITE_ID_ITEM_BOOMERANG,
 	MISC_SPRITE_ID_BOOMERANG,
+	MISC_SPRITE_ID_SHURIKEN_BIG,
 };
 
 class SpriteManager

@@ -13,6 +13,8 @@ class Game
 	static Game* instance;
 
 	World* world;
+	World* world1;
+	World* world2;
 
 	Tilemap* tilemap;
 

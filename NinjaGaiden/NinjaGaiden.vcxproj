@@ -22,14 +22,14 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{2C205C1C-D7D7-4596-8F57-2FAAB3A4A038}</ProjectGuid>
     <RootNamespace>SourceGame</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
     <ProjectName>NinjaGaiden</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -42,7 +42,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -175,9 +175,13 @@
     <ClInclude Include="ScoreBar.h" />
     <ClInclude Include="Shooter.h" />
     <ClInclude Include="ShooterBullet.h" />
+    <ClInclude Include="ShurikenBig.h" />
+    <ClInclude Include="ShurikenItem.h" />
     <ClInclude Include="Space.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="SpriteManager.h" />
+    <ClInclude Include="Stair.h" />
+    <ClInclude Include="SubWeapon.h" />
     <ClInclude Include="SwordMan.h" />
     <ClInclude Include="SwordRObject.h" />
     <ClInclude Include="Tilemap.h" />
@@ -217,8 +221,12 @@
     <ClCompile Include="ScoreBar.cpp" />
     <ClCompile Include="Shooter.cpp" />
     <ClCompile Include="ShooterBullet.cpp" />
+    <ClCompile Include="ShurikenBig.cpp" />
+    <ClCompile Include="ShurikenItem.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SpriteManager.cpp" />
+    <ClCompile Include="Stair.cpp" />
+    <ClCompile Include="SubWeapon.cpp" />
     <ClCompile Include="SwordMan.cpp" />
     <ClCompile Include="SwordRObject.cpp" />
     <ClCompile Include="Tilemap.cpp" />

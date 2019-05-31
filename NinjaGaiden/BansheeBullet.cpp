@@ -1,6 +1,7 @@
 #include "BansheeBullet.h"
 #include"SpriteManager.h"
 #include"Ryu.h"
+#include"Enemy.h"
 
 
 void BansheeBullet::onCollision(MovableRect * other, float collisionTime, int nx, int ny)
@@ -12,6 +13,7 @@ BansheeBullet::BansheeBullet()
 	setSprite(SpriteManager::getSprite(SPRITE_INFO_BANSHEE_WEAPON));
 	setWidth(8);
 	setHeight(15);
+	setCollisionType(CT_ENEMY);
 }
 
 

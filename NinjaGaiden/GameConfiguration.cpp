@@ -67,7 +67,9 @@ double GameConfiguration::GetConfiguration(const char * key)
 		globalsConfigurationDouble->insert(pair<const char*, double>("shooter_vx", 80));
 
 		globalsConfigurationDouble->insert(pair<const char*, double>("shooter_bullet_vx", 200));
-		
+
+		globalsConfigurationDouble->insert(pair<const char*, double>("SHURIKENBIG_DX", 3));
+
 
 	}
 	/* trả ra giá trị cấu hình tại key */

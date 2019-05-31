@@ -37,10 +37,13 @@ void KEY::update()
 	isSpace3Down = GetAsyncKeyState(getKeyChar('e'));
 	isSpace4Down = GetAsyncKeyState(getKeyChar('r'));
 	isSpace5Down = GetAsyncKeyState(getKeyChar('t'));
+
+	isKeyMap2Down = GetAsyncKeyState(getKeyChar('a'));
 }
 
 KEY::KEY()
 {
+	isKeyMap2Down = false;
 }
 
 

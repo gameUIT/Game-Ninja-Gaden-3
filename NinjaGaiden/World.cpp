@@ -13,6 +13,8 @@
 #include"Shooter.h"
 #include"Butterfly.h"
 #include"Item1.h"
+#include"ShurikenItem.h"
+#include"Stair.h"
 
 
 World * World::instance = 0;
@@ -84,6 +86,13 @@ void World::Init(
 			obj = new Shooter();
 			break;
 
+		case SPRITE_INFO_SHURIKEN_ITEM:
+			obj = new ShurikenItem();
+			break;
+
+		case SPRITE_INFO_STAIR:
+			obj = new Stair();
+			break;
 
 		case SPRITE_BUTTER_FLY:
 			obj = new Butterfly();
@@ -197,10 +206,15 @@ void World::update(float dt)
 
 	for (size_t i = 0; i < allObjects.Count; i++)
 	{
+		auto obj = allObjects[i];
+		if (!Collision::AABBCheck(obj, Camera::getInstance()) && !Collision::AABBCheck(obj->getInitBox(), Camera::getInstance()))
+		{
+			obj->restoreLocation();
+		}
 		/* cập nhật đối tượng */
-		allObjects[i]->update(dt);
-		Collision::CheckCollision(Ryu::getInstance(), allObjects[i]);
-		Collision::CheckCollision(allObjects[i], Ryu::getInstance());
+		obj->update(dt);
+		Collision::CheckCollision(Ryu::getInstance(), obj);
+		Collision::CheckCollision(obj, Ryu::getInstance());
 	}
 
 	RunTimeObject::updateRuntimeObjects();
@@ -216,6 +230,7 @@ void World::update(float dt)
 	{
 		auto runTimeObject = runTimeObjects->at(ir);
 		runTimeObject->update(dt);
+		Collision::CheckCollision(ryu, runTimeObject);
 
 		for (int ie = 0; ie < enemies->Count; ie++)
 		{

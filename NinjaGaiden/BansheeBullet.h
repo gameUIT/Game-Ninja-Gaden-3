@@ -1,5 +1,6 @@
 #pragma once
 #include "RunTimeObject.h"
+
 class BansheeBullet :
 	public RunTimeObject
 {

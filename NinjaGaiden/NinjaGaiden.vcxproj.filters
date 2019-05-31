@@ -119,6 +119,16 @@
     <ClCompile Include="Item1.cpp">
       <Filter>Objects\Items</Filter>
     </ClCompile>
+    <ClCompile Include="SubWeapon.cpp">
+      <Filter>Objects\RunTimes\SubWeapons</Filter>
+    </ClCompile>
+    <ClCompile Include="ShurikenItem.cpp">
+      <Filter>Objects\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="ShurikenBig.cpp">
+      <Filter>Objects\RunTimes\SubWeapons</Filter>
+    </ClCompile>
+    <ClCompile Include="Stair.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -251,6 +261,16 @@
     <ClInclude Include="Item1.h">
       <Filter>Objects\Items</Filter>
     </ClInclude>
+    <ClInclude Include="SubWeapon.h">
+      <Filter>Objects\RunTimes\SubWeapons</Filter>
+    </ClInclude>
+    <ClInclude Include="ShurikenItem.h">
+      <Filter>Objects\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="ShurikenBig.h">
+      <Filter>Objects\RunTimes\SubWeapons</Filter>
+    </ClInclude>
+    <ClInclude Include="Stair.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Animation">
@@ -300,6 +320,9 @@
     </Filter>
     <Filter Include="Objects\Items">
       <UniqueIdentifier>{e3935fe0-e348-4845-ae9b-dd8117b5d9b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\RunTimes\SubWeapons">
+      <UniqueIdentifier>{8b61f986-47fd-4eba-a51a-e287aa50b33f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

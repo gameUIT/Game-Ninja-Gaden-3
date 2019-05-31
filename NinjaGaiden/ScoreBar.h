@@ -17,6 +17,8 @@ class ScoreBar
 	void renderNumber(int num, int x, int y, int maxLength);
 	void renderHealth();
 	void renderBossHealth();
+ 	void renderSubweapon();
+
 	static ScoreBar* instance;
 	SCORE_LOCATION lifeLocation;
 	SCORE_LOCATION heartLocation;
@@ -26,6 +28,7 @@ class ScoreBar
 	SCORE_LOCATION healthLocation;
 	SCORE_LOCATION subWeaponLocation;
 	SCORE_LOCATION bossHealthLocation;
+
 
 	int health;
 	int bossHealth;
@@ -42,6 +45,9 @@ public:
 	~ScoreBar();
 	void render();
 	void update();
+
+	void enableSubweapon();
+	bool enableSubWeapon;
 
 
 	void restoreHealth();

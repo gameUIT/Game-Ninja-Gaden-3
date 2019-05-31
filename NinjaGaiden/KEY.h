@@ -18,6 +18,7 @@ public:
 		isSpace5Down,
 		isAttackDown,
 		isPreviousAttackDown,
+		isKeyMap2Down,
 		isAttackPress;
 
 	static KEY* instance;

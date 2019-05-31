@@ -3,6 +3,7 @@
 #include"SpriteManager.h"
 #include"KEY.h"
 #include"DelayTime.h"
+#include"Stair.h"
 
 enum RYU_ANIMATION
 {
@@ -30,6 +31,7 @@ enum RYU_STATE
 	RYU_STATE_CLIMBING,
 	RYU_STATE_ATTACK,
 	RYU_STATE_HURT,
+	RYU_STATE_STAIR,
 };
 
 class Ryu :
@@ -44,7 +46,10 @@ class Ryu :
 	DelayTime invisibleDelay;
 	GameTime invisibleTime;
 	bool isHit;
+
+
 public:
+	Stair* stair;
 	bool isDead;
 
 	GameTime blinkTime;

@@ -2,7 +2,7 @@ Sprite ryu
 R	G	B
 255	0 10 0
 Count
-25
+26
 
 
 Name
@@ -242,3 +242,12 @@ Frame Count
 LocationX		LocationY		FrameWidth		FrameHeight	AnchorX		AnchorY
 60				2				14				14			0			0
 77				2				15				14			0			0
+
+
+Name
+Stand
+Frame Count
+1
+
+LocationX		LocationY		FrameWidth		FrameHeight	AnchorX		AnchorY
+13				42				15				16			0			0
