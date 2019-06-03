@@ -1,0 +1,16 @@
+Sprite money_bag_1
+R	G	B
+255	255	163	177
+Animation Count
+1
+
+
+Name
+Animation
+Frame Count
+1
+
+FrameX		FrameY		FrameWidth		FrameHeight		AnchorX		AnchorY
+0			0			16				15				0			0
+
+

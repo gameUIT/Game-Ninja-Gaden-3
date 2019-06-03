@@ -44,6 +44,14 @@ SpriteManager::SpriteManager()
 	sprites[SPRITE_INFO_SHOOTER]->InitFromFile("assets/sprites/enemies/shooter/image.png", "assets/sprites/enemies/shooter/shooter.info.dat");
 	sprites[SPRITE_INFO_SHOOTER]->image->direction = RIGHT;
 
+	/* sprite của runner */
+	sprites[SPRITE_INFO_RUNNER]->InitFromFile("assets/sprites/enemies/runner/image.png", "assets/sprites/enemies/runner/runner.info.dat");
+	sprites[SPRITE_INFO_RUNNER]->image->direction = RIGHT;
+
+	/* sprite của baazoka */
+	sprites[SPRITE_INFO_BAAZOKA]->InitFromFile("assets/sprites/enemies/baazoka/image.png", "assets/sprites/enemies/baazoka/baazoka.info.dat");
+	sprites[SPRITE_INFO_BAAZOKA]->image->direction = RIGHT;
+	
 	/* sprite của ryu */
 	sprites[SPRITE_INFO_RYU]->InitFromFile("assets/sprites/ryu/image.png", "assets/sprites/ryu/ryu.info.dat");
 	sprites[SPRITE_INFO_RYU]->image->direction = RIGHT;
@@ -66,11 +74,31 @@ SpriteManager::SpriteManager()
 	sprites[SPRITE_BUTTER_FLY]->InitFromFile("assets/sprites/butterfly/image.png", "assets/sprites/butterfly/butterfly.info.dat");
 	sprites[SPRITE_BUTTER_FLY]->image->direction = RIGHT;
 
+	sprites[SPRITE_BIRD_STATIC]->InitFromFile("assets/sprites/bird_static/image.png", "assets/sprites/bird_static/bird_static.info.dat");
+	sprites[SPRITE_BIRD_STATIC]->image->direction = RIGHT;
+
 	sprites[SPRITE_ITEM_1]->InitFromFile("assets/sprites/items/item1/image.png", "assets/sprites/items/item1/item1.info.dat");
 	sprites[SPRITE_ITEM_1]->image->direction = RIGHT;
 
-	sprites[SPRITE_ITEM_SHURIKEN_BIG]->InitFromFile("assets/sprites/weapon/shuriken_small/image.png", "assets/sprites/weapon/shuriken_small/shuriken_small.info.dat");
-	sprites[SPRITE_ITEM_SHURIKEN_BIG]->image->direction = RIGHT;
+	sprites[SPRITE_ITEM_2]->InitFromFile("assets/sprites/items/item2/image.png", "assets/sprites/items/item2/item2.info.dat");
+	sprites[SPRITE_ITEM_2]->image->direction = RIGHT;
+
+	sprites[SPRITE_ITEM_MONEY_BAG_BLUE]->InitFromFile("assets/sprites/items/money_bag_1/image.png", "assets/sprites/items/money_bag_1/money_bag_1.info.dat");
+	sprites[SPRITE_ITEM_MONEY_BAG_BLUE]->image->direction = RIGHT;
+
+	sprites[SPRITE_ITEM_FIRE]->InitFromFile("assets/sprites/items/fire/image.png", "assets/sprites/items/fire/fire.info.dat");
+	sprites[SPRITE_ITEM_FIRE]->image->direction = RIGHT;
+
+	sprites[SPRITE_ITEM_STOP_WATCH]->InitFromFile("assets/sprites/items/stop_watch/image.png", "assets/sprites/items/stop_watch/stop_watch.info.dat");
+	sprites[SPRITE_ITEM_STOP_WATCH]->image->direction = RIGHT;
+
+	sprites[SPRITE_ITEM_MONEY_BAG_RED]->InitFromFile("assets/sprites/items/money_bag_2/image.png", "assets/sprites/items/money_bag_2/money_bag_2.info.dat");
+	sprites[SPRITE_ITEM_MONEY_BAG_RED]->image->direction = RIGHT;
+
+	sprites[SPRITE_ITEM_SHURIKEN_SMALL]->InitFromFile("assets/sprites/weapon/shuriken_small/image.png", "assets/sprites/weapon/shuriken_small/shuriken_small.info.dat");
+	sprites[SPRITE_ITEM_SHURIKEN_SMALL]->image->direction = RIGHT;
+
+
 	
 }
 SpriteManager::~SpriteManager()

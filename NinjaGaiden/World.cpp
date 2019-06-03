@@ -15,6 +15,14 @@
 #include"Item1.h"
 #include"ShurikenItem.h"
 #include"Stair.h"
+#include"BirdStatic.h"
+#include"Runner.h"
+#include"Baazoka.h"
+#include"Item2.h"
+#include"Fire.h"
+#include"MoneyBagBlue.h"
+#include"MoneyBagRed.h"
+#include"StopWatch.h"
 
 
 World * World::instance = 0;
@@ -98,10 +106,42 @@ void World::Init(
 			obj = new Butterfly();
 			break;
 
+		case SPRITE_BIRD_STATIC:
+			obj = new BirdStatic();
+			break;
+
 		case SPRITE_ITEM_1:
 			obj = new Item1();
 			break;
 
+			//
+		case SPRITE_ITEM_2:
+			obj = new Item2();
+			break;
+
+		case SPRITE_ITEM_MONEY_BAG_BLUE:
+			obj = new MoneyBagBlue();
+			break;
+
+		case SPRITE_ITEM_MONEY_BAG_RED:
+			obj = new MoneyBagRed();
+			break;
+
+		case SPRITE_ITEM_FIRE:
+			obj = new Fire();
+			break;
+
+		case SPRITE_ITEM_STOP_WATCH:
+			obj = new StopWatch();
+			break;
+
+		case SPRITE_INFO_RUNNER:
+			obj = new Runner();
+			break;
+
+		case SPRITE_INFO_BAAZOKA:
+			obj = new Baazoka();
+			break;
 		default:
 			obj = new BaseObject();
 			break;
@@ -207,7 +247,7 @@ void World::update(float dt)
 	for (size_t i = 0; i < allObjects.Count; i++)
 	{
 		auto obj = allObjects[i];
-		if (!Collision::AABBCheck(obj, Camera::getInstance()) && !Collision::AABBCheck(obj->getInitBox(), Camera::getInstance()))
+		if (!Collision::AABBCheck(obj, Camera::getInstance()) && !Collision::AABBCheck(obj->getInitBox(), Camera::getInstance()) && obj->getCollisionType() != CT_ITEM)
 		{
 			obj->restoreLocation();
 		}

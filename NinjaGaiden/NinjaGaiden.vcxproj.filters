@@ -125,10 +125,32 @@
     <ClCompile Include="ShurikenItem.cpp">
       <Filter>Objects\Items</Filter>
     </ClCompile>
-    <ClCompile Include="ShurikenBig.cpp">
+    <ClCompile Include="Stair.cpp" />
+    <ClCompile Include="BirdStatic.cpp">
+      <Filter>Objects\Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="ShurikenSmall.cpp">
       <Filter>Objects\RunTimes\SubWeapons</Filter>
     </ClCompile>
-    <ClCompile Include="Stair.cpp" />
+    <ClCompile Include="Baazoka.cpp">
+      <Filter>Objects\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Runner.cpp">
+      <Filter>Objects\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="StopWatch.cpp" />
+    <ClCompile Include="Fire.cpp">
+      <Filter>Objects\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="Item2.cpp">
+      <Filter>Objects\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="MoneyBagBlue.cpp">
+      <Filter>Objects\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="MoneyBagRed.cpp">
+      <Filter>Objects\Items</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -267,10 +289,32 @@
     <ClInclude Include="ShurikenItem.h">
       <Filter>Objects\Items</Filter>
     </ClInclude>
-    <ClInclude Include="ShurikenBig.h">
+    <ClInclude Include="Stair.h" />
+    <ClInclude Include="BirdStatic.h">
+      <Filter>Objects\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="ShurikenSmall.h">
       <Filter>Objects\RunTimes\SubWeapons</Filter>
     </ClInclude>
-    <ClInclude Include="Stair.h" />
+    <ClInclude Include="Baazoka.h">
+      <Filter>Objects\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Runner.h">
+      <Filter>Objects\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="StopWatch.h" />
+    <ClInclude Include="Fire.h">
+      <Filter>Objects\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="Item2.h">
+      <Filter>Objects\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="MoneyBagBlue.h">
+      <Filter>Objects\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="MoneyBagRed.h">
+      <Filter>Objects\Items</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Animation">
@@ -290,9 +334,6 @@
     </Filter>
     <Filter Include="Objects\Misc">
       <UniqueIdentifier>{d8053b54-0b28-4e9e-89e6-629c6fdfa7b4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Objects\Ryu">
-      <UniqueIdentifier>{c905aeb5-a0f0-41bd-9925-154b814d1423}</UniqueIdentifier>
     </Filter>
     <Filter Include="Rect">
       <UniqueIdentifier>{0f3a0d90-7fa0-46e2-a507-80329ab0880b}</UniqueIdentifier>
@@ -323,6 +364,9 @@
     </Filter>
     <Filter Include="Objects\RunTimes\SubWeapons">
       <UniqueIdentifier>{8b61f986-47fd-4eba-a51a-e287aa50b33f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\Ryu">
+      <UniqueIdentifier>{c905aeb5-a0f0-41bd-9925-154b814d1423}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -5,7 +5,7 @@
 #include"Collision.h"
 #include"Enemy.h"
 #include"ScoreBar.h"
-#include"ShurikenBig.h"
+#include"ShurikenSmall.h"
 
 Ryu* Ryu::instance = 0;
 Ryu* Ryu::getInstance()
@@ -184,10 +184,16 @@ void Ryu::onUpdate(float dt)
 			{
 				if (keyUpDown && ScoreBar::getInstance()->enableSubWeapon)
 				{
-					ShurikenBig* weapon = new ShurikenBig();
-					weapon->setX(this->getMidX());
-					weapon->setY(this->getY() - 5);
-					weapon->setDx(getDirection() * GLOBALS_D("SHURIKENBIG_DX"));
+					createNewSubWeapon();
+					//setState(RYU_STATE_ATTACK_SUB_WEAPON);
+					if (getDirection() == LEFT)
+					{
+						setAnimation(RYU_ANIMATION_ATTACK_RANGED_LEFT);
+					} 
+					else if (getDirection() == RIGHT)
+					{
+						setAnimation(RYU_ANIMATION_ATTACK_RANGED_RIGHT);
+					}
 				}
 				else
 				{
@@ -294,6 +300,30 @@ void Ryu::onUpdate(float dt)
 		break;
 	case RYU_STATE_CLIMBING:
 		break;
+	case RYU_STATE_ATTACK_SUB_WEAPON:
+		switch (getDirection())
+		{
+		case RIGHT:
+			setAnimation(RYU_ANIMATION_ATTACK_RANGED_RIGHT);
+
+			if (getIsLastFrameAnimationDone())
+			{
+				setState(RYU_STATE_NORMAL);
+				setAnimation(RYU_ANIMATION_STAND);
+			}
+			break;
+		case LEFT:
+			setAnimation(RYU_ANIMATION_ATTACK_RANGED_LEFT);
+
+			if (getIsLastFrameAnimationDone())
+			{
+				setState(RYU_STATE_NORMAL);
+				setAnimation(RYU_ANIMATION_STAND);
+			}
+			break;
+		default:
+			break;
+		}
 	case RYU_STATE_ATTACK:
 		if (getIsGrounded())
 		{
@@ -438,6 +468,14 @@ void Ryu::createNewSword()
 	sword->setY(getTop() + 10);
 	sword->setWidth(30);
 	sword->setHeight(30);
+}
+
+void Ryu::createNewSubWeapon()
+{
+	ShurikenSmall* shuriken = new ShurikenSmall();
+	shuriken->setX(this->getMidX());
+	shuriken->setY(this->getY() - 5);
+	shuriken->setDx(getDirection() * GLOBALS_D("SHURIKENBIG_DX"));
 }
 
 void Ryu::setCanSitDown(bool canSitDown)

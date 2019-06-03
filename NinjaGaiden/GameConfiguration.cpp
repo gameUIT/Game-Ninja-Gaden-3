@@ -46,6 +46,8 @@ double GameConfiguration::GetConfiguration(const char * key)
 		/*  SWORD MAN  */
 		globalsConfigurationDouble->insert(pair<const char*, double>("swordman_vx", 80));
 		globalsConfigurationDouble->insert(pair<const char*, double>("swordman_distance_to_activate", 200));
+		globalsConfigurationDouble->insert(pair<const char*, double>("runner_vx", 100));
+
 
 		globalsConfigurationDouble->insert(pair<const char*, double>("bird_r", 1));
 		globalsConfigurationDouble->insert(pair<const char*, double>("bird_visible", 200));
@@ -65,6 +67,10 @@ double GameConfiguration::GetConfiguration(const char * key)
 		globalsConfigurationDouble->insert(pair<const char*, double>("shooter_fire_delay", 1000));
 		globalsConfigurationDouble->insert(pair<const char*, double>("shooter_fire_time", 300));
 		globalsConfigurationDouble->insert(pair<const char*, double>("shooter_vx", 80));
+
+		globalsConfigurationDouble->insert(pair<const char*, double>("baazoka_fire_delay", 1500));
+		globalsConfigurationDouble->insert(pair<const char*, double>("baazoka_fire_time", 1500));
+
 
 		globalsConfigurationDouble->insert(pair<const char*, double>("shooter_bullet_vx", 200));
 

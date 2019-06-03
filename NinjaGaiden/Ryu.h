@@ -32,6 +32,7 @@ enum RYU_STATE
 	RYU_STATE_ATTACK,
 	RYU_STATE_HURT,
 	RYU_STATE_STAIR,
+	RYU_STATE_ATTACK_SUB_WEAPON,
 };
 
 class Ryu :
@@ -66,6 +67,8 @@ public:
 	void setIsSitting(bool isSitting);
 
 	void createNewSword();
+
+	void createNewSubWeapon();
 
 	RYU_STATE getState();
 	void setState(RYU_STATE state);

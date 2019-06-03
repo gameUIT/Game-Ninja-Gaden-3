@@ -22,14 +22,14 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{2C205C1C-D7D7-4596-8F57-2FAAB3A4A038}</ProjectGuid>
     <RootNamespace>SourceGame</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
     <ProjectName>NinjaGaiden</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -140,11 +140,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
+    <ClInclude Include="Baazoka.h" />
     <ClInclude Include="Banshee.h" />
     <ClInclude Include="BansheeBullet.h" />
     <ClInclude Include="BaseObject.h" />
     <ClInclude Include="Bat.h" />
     <ClInclude Include="Bird.h" />
+    <ClInclude Include="BirdStatic.h" />
     <ClInclude Include="Butterfly.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Cell.h" />
@@ -154,6 +156,7 @@
     <ClInclude Include="DelayTime.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="ExplosionEffect.h" />
+    <ClInclude Include="Fire.h" />
     <ClInclude Include="FrameAnimation.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameConfiguration.h" />
@@ -164,23 +167,28 @@
     <ClInclude Include="Grid.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Item1.h" />
+    <ClInclude Include="Item2.h" />
     <ClInclude Include="KEY.h" />
     <ClInclude Include="List.h" />
+    <ClInclude Include="MoneyBagBlue.h" />
+    <ClInclude Include="MoneyBagRed.h" />
     <ClInclude Include="MovableRect.h" />
     <ClInclude Include="Panther.h" />
     <ClInclude Include="PhysicsObject.h" />
     <ClInclude Include="Rect.h" />
+    <ClInclude Include="Runner.h" />
     <ClInclude Include="RunTimeObject.h" />
     <ClInclude Include="Ryu.h" />
     <ClInclude Include="ScoreBar.h" />
     <ClInclude Include="Shooter.h" />
     <ClInclude Include="ShooterBullet.h" />
-    <ClInclude Include="ShurikenBig.h" />
+    <ClInclude Include="ShurikenSmall.h" />
     <ClInclude Include="ShurikenItem.h" />
     <ClInclude Include="Space.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="SpriteManager.h" />
     <ClInclude Include="Stair.h" />
+    <ClInclude Include="StopWatch.h" />
     <ClInclude Include="SubWeapon.h" />
     <ClInclude Include="SwordMan.h" />
     <ClInclude Include="SwordRObject.h" />
@@ -190,11 +198,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="Baazoka.cpp" />
     <ClCompile Include="Banshee.cpp" />
     <ClCompile Include="BansheeBullet.cpp" />
     <ClCompile Include="BaseObject.cpp" />
     <ClCompile Include="Bat.cpp" />
     <ClCompile Include="Bird.cpp" />
+    <ClCompile Include="BirdStatic.cpp" />
     <ClCompile Include="Butterfly.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Cell.cpp" />
@@ -202,6 +212,7 @@
     <ClCompile Include="DelayTime.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="ExplosionEffect.cpp" />
+    <ClCompile Include="Fire.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameConfiguration.cpp" />
     <ClCompile Include="GameDirectX.cpp" />
@@ -211,21 +222,26 @@
     <ClCompile Include="Grid.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="Item1.cpp" />
+    <ClCompile Include="Item2.cpp" />
     <ClCompile Include="KEY.cpp" />
+    <ClCompile Include="MoneyBagBlue.cpp" />
+    <ClCompile Include="MoneyBagRed.cpp" />
     <ClCompile Include="MovableRect.cpp" />
     <ClCompile Include="Panther.cpp" />
     <ClCompile Include="PhysicsObject.cpp" />
     <ClCompile Include="Rect.cpp" />
+    <ClCompile Include="Runner.cpp" />
     <ClCompile Include="RunTimeObject.cpp" />
     <ClCompile Include="Ryu.cpp" />
     <ClCompile Include="ScoreBar.cpp" />
     <ClCompile Include="Shooter.cpp" />
     <ClCompile Include="ShooterBullet.cpp" />
-    <ClCompile Include="ShurikenBig.cpp" />
+    <ClCompile Include="ShurikenSmall.cpp" />
     <ClCompile Include="ShurikenItem.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SpriteManager.cpp" />
     <ClCompile Include="Stair.cpp" />
+    <ClCompile Include="StopWatch.cpp" />
     <ClCompile Include="SubWeapon.cpp" />
     <ClCompile Include="SwordMan.cpp" />
     <ClCompile Include="SwordRObject.cpp" />
