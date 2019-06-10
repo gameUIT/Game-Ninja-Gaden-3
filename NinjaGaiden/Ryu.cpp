@@ -476,6 +476,7 @@ void Ryu::createNewSubWeapon()
 	shuriken->setX(this->getMidX());
 	shuriken->setY(this->getY() - 5);
 	shuriken->setDx(getDirection() * GLOBALS_D("SHURIKENBIG_DX"));
+	shuriken->getInitBox()->setX(getMidX());
 }
 
 void Ryu::setCanSitDown(bool canSitDown)

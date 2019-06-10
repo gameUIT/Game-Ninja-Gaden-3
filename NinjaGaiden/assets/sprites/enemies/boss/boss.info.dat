@@ -1,0 +1,35 @@
+Sprite boss
+R	G	B
+255	255	163	177
+Animation Count
+3
+
+
+Name
+Jump
+Frame Count
+2
+
+FrameX		FrameY		FrameWidth		FrameHeight		AnchorX		AnchorY
+0			6			34				48				2			4
+34			0			38				54				6			0
+
+
+Name
+Stand
+Frame Count
+1
+
+FrameX		FrameY		FrameWidth		FrameHeight		AnchorX		AnchorY
+0			6			34				48				0			0
+
+
+Name
+Animation
+Frame Count
+1
+
+FrameX		FrameY		FrameWidth		FrameHeight		AnchorX		AnchorY
+34			0			38				54				0			0
+
+

@@ -12,7 +12,7 @@ class MovableRect :
 public:
 	bool isAlive;
 	COLLISION_TYPE getCollisionType();
-	void setCollisionType(COLLISION_TYPE collisionType);
+	virtual void setCollisionType(COLLISION_TYPE collisionType);
 	virtual void setDx(float dx);
 	virtual void setDy(float dy);
 	float getDx();

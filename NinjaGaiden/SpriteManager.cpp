@@ -98,8 +98,9 @@ SpriteManager::SpriteManager()
 	sprites[SPRITE_ITEM_SHURIKEN_SMALL]->InitFromFile("assets/sprites/weapon/shuriken_small/image.png", "assets/sprites/weapon/shuriken_small/shuriken_small.info.dat");
 	sprites[SPRITE_ITEM_SHURIKEN_SMALL]->image->direction = RIGHT;
 
+	sprites[SPRITE_BOSS]->InitFromFile("assets/sprites/enemies/boss/image.png", "assets/sprites/enemies/boss/boss.info.dat");
+	sprites[SPRITE_BOSS]->image->direction = RIGHT;
 
-	
 }
 SpriteManager::~SpriteManager()
 {

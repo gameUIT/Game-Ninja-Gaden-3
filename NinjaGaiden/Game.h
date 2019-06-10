@@ -15,6 +15,7 @@ class Game
 	World* world;
 	World* world1;
 	World* world2;
+	World* world3;
 
 	Tilemap* tilemap;
 

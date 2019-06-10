@@ -23,6 +23,7 @@
 #include"MoneyBagBlue.h"
 #include"MoneyBagRed.h"
 #include"StopWatch.h"
+#include"Boss.h"
 
 
 World * World::instance = 0;
@@ -142,6 +143,11 @@ void World::Init(
 		case SPRITE_INFO_BAAZOKA:
 			obj = new Baazoka();
 			break;
+
+		case SPRITE_BOSS:
+			obj = new Boss();
+			break;
+
 		default:
 			obj = new BaseObject();
 			break;

@@ -13,9 +13,7 @@ Game * Game::getInstance()
 /* Các câu lệnh khởi tạo game */
 void Game::GameInit()
 {
-	/* khởi tạo tilemap */
-	world1 = new World();
-	world1->Init("assets/levels/level3_1");
+
 
 	Camera::getInstance()->setSize(
 		GLOBALS_D("backbuffer_width"),
@@ -23,6 +21,13 @@ void Game::GameInit()
 
 	world2 = new World();
 	world2->Init("assets/levels/level3_2");
+
+	world3 = new World();
+	world3->Init("assets/levels/level_boss");
+
+	/* khởi tạo tilemap */
+	world1 = new World();
+	world1->Init("assets/levels/level3_1");
 
 	world = world1;
 
@@ -44,6 +49,14 @@ void Game::GameUpdate(float dt)
 	{
 		world = world2;
 		World::instance = world2;
+		World::instance->setCurrentSpace(0);
+		World::instance->resetLocationInSpace();
+	}
+	if (KEY::getInstance()->isKeyMap3Down)
+	{
+		world = world3;
+		World::instance = world3;
+		World::instance->setCurrentSpace(0);
 		World::instance->resetLocationInSpace();
 	}
 	/* cập nhật đối tượng trong world */

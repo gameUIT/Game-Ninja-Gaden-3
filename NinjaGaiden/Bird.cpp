@@ -2,6 +2,7 @@
 #include"Ryu.h"
 #include"Camera.h"
 #include"Collision.h"
+#include "Boss.h"
 
 Bird::Bird()
 {
@@ -16,6 +17,7 @@ void Bird::setState(BIRD_STATE state)
 {
 	this->state = state;
 }
+
 
 void Bird::onCollision(MovableRect * other, float collisionTime, int nx, int ny)
 {

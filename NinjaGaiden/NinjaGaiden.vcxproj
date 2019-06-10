@@ -42,7 +42,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -147,6 +147,7 @@
     <ClInclude Include="Bat.h" />
     <ClInclude Include="Bird.h" />
     <ClInclude Include="BirdStatic.h" />
+    <ClInclude Include="Boss.h" />
     <ClInclude Include="Butterfly.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Cell.h" />
@@ -205,6 +206,7 @@
     <ClCompile Include="Bat.cpp" />
     <ClCompile Include="Bird.cpp" />
     <ClCompile Include="BirdStatic.cpp" />
+    <ClCompile Include="Boss.cpp" />
     <ClCompile Include="Butterfly.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Cell.cpp" />
