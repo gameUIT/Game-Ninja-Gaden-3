@@ -75,7 +75,7 @@ double GameConfiguration::GetConfiguration(const char * key)
 		globalsConfigurationDouble->insert(pair<const char*, double>("shooter_bullet_vx", 200));
 
 		globalsConfigurationDouble->insert(pair<const char*, double>("boss_vx", 150));
-		globalsConfigurationDouble->insert(pair<const char*, double>("boss_vy", 200));
+		globalsConfigurationDouble->insert(pair<const char*, double>("boss_vy", 230));
 
 		globalsConfigurationDouble->insert(pair<const char*, double>("SHURIKENBIG_DX", 3));
 

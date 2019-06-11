@@ -40,7 +40,7 @@ void Boss::onIntersect(MovableRect * other)
 		effect->setX(getMidX());
 		effect->setY(getMidY());
 
-		ScoreBar::getInstance()->setScore(ScoreBar::getInstance()->getScore() + 100);
+		ScoreBar::getInstance()->setScore(ScoreBar::getInstance()->getScore() + 1000);
 	}
 }
 

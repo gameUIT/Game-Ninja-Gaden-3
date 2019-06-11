@@ -25,26 +25,22 @@ void Game::GameInit()
 	world3 = new World();
 	world3->Init("assets/levels/level_boss");
 
-	/* khởi tạo tilemap */
 	world1 = new World();
 	world1->Init("assets/levels/level3_1");
 
 	world = world1;
 
-	World::instance = world1;
-
-
-
-	//Camera::getInstance()->set(
-	//	0,
-	//	192, /* y camera */
-	//	/* kích thước của camera bằng với kích thước của backbuffer */
-		//GLOBALS_D("backbuffer_width"), 
-		//GLOBALS_D("backbuffer_height"));
 }
 /* Các câu lệnh cập nhật game */
 void Game::GameUpdate(float dt)
 {
+	if (KEY::getInstance()->isKeyMap1Down)
+	{
+		world = world1;
+		World::instance = world1;
+		World::instance->setCurrentSpace(0);
+		World::instance->resetLocationInSpace();
+	}
 	if (KEY::getInstance()->isKeyMap2Down)
 	{
 		world = world2;

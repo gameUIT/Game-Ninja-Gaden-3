@@ -18,6 +18,7 @@ public:
 		isSpace5Down,
 		isAttackDown,
 		isPreviousAttackDown,
+		isKeyMap1Down,
 		isKeyMap2Down,
 		isKeyMap3Down,
 		isAttackPress;

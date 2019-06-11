@@ -21,6 +21,7 @@ class Boss :
 {
 	BOSS_STATE state;
 	DelayTime standDelay;
+	DelayTime deathDelay;
 public:
 	void setCollisionType(COLLISION_TYPE collisionType) override;
 	void setState(BOSS_STATE state);
