@@ -34,13 +34,13 @@ void Game::GameInit()
 /* Các câu lệnh cập nhật game */
 void Game::GameUpdate(float dt)
 {
-	if (KEY::getInstance()->isKeyMap1Down)
-	{
-		world = world1;
-		World::instance = world1;
-		World::instance->setCurrentSpace(0);
-		World::instance->resetLocationInSpace();
-	}
+	//if (KEY::getInstance()->isKeyMap1Down)
+	//{
+	//	world = world1;
+	//	World::instance = world1;
+	//	World::instance->setCurrentSpace(0);
+	//	World::instance->resetLocationInSpace();
+	//}
 	if (KEY::getInstance()->isKeyMap2Down)
 	{
 		world = world2;

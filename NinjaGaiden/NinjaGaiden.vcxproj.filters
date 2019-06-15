@@ -154,6 +154,12 @@
     <ClCompile Include="Boss.cpp">
       <Filter>Objects\Enemies</Filter>
     </ClCompile>
+    <ClCompile Include="ShurikenBig.cpp">
+      <Filter>Objects\RunTimes\SubWeapons</Filter>
+    </ClCompile>
+    <ClCompile Include="ShurikenBigItem.cpp">
+      <Filter>Objects\Items</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -320,6 +326,12 @@
     </ClInclude>
     <ClInclude Include="Boss.h">
       <Filter>Objects\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="ShurikenBig.h">
+      <Filter>Objects\RunTimes\SubWeapons</Filter>
+    </ClInclude>
+    <ClInclude Include="ShurikenBigItem.h">
+      <Filter>Objects\Items</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

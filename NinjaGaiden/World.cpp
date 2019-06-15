@@ -14,6 +14,7 @@
 #include"Butterfly.h"
 #include"Item1.h"
 #include"ShurikenItem.h"
+#include"ShurikenBigItem.h"
 #include"Stair.h"
 #include"BirdStatic.h"
 #include"Runner.h"
@@ -99,6 +100,10 @@ void World::Init(
 			obj = new ShurikenItem();
 			break;
 
+		case SPRITE_ITEM_SHURIKEN_2:
+			obj = new ShurikenBigItem();
+			break;
+
 		case SPRITE_INFO_STAIR:
 			obj = new Stair();
 			break;
@@ -152,13 +157,14 @@ void World::Init(
 			obj = new BaseObject();
 			break;
 		}
-		/* đọc thông số của đối tượng */
-		obj->onInitFromFile(fs, worldHeight);
 		if (id >= 0)
 		{
 			/* nếu id đối tượng không âm tức đối tượng có sprite ta gán sprite cho nó */
 			obj->setSprite(SPR(id));
 		}
+		/* đọc thông số của đối tượng */
+		obj->onInitFromFile(fs, worldHeight);
+
 		/* thêm đối tượng vào danh sách */
 		allObjects._Add(obj);
 

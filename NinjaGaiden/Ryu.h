@@ -53,6 +53,8 @@ public:
 	Stair* stair;
 	bool isDead;
 
+	bool isBigShuriken;
+
 	GameTime blinkTime;
 	DelayTime blinkDelay;
 

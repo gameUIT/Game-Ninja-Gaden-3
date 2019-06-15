@@ -11,11 +11,11 @@ ShurikenSmall::ShurikenSmall()
 
 void ShurikenSmall::onUpdate(float dt)
 {
-	if (abs(this->getX() - this->getInitBox()->getX()) > 100 && canReturn)
-	{
-		setDx(-getDx());
-		canReturn = false;
-	}
+	//if (abs(this->getX() - this->getInitBox()->getX()) > 100 && canReturn)
+	//{
+	//	setDx(-getDx());
+	//	canReturn = false;
+	//}
 	SubWeapon::onUpdate(dt);
 }
 

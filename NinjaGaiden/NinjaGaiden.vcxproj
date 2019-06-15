@@ -183,6 +183,8 @@
     <ClInclude Include="ScoreBar.h" />
     <ClInclude Include="Shooter.h" />
     <ClInclude Include="ShooterBullet.h" />
+    <ClInclude Include="ShurikenBig.h" />
+    <ClInclude Include="ShurikenBigItem.h" />
     <ClInclude Include="ShurikenSmall.h" />
     <ClInclude Include="ShurikenItem.h" />
     <ClInclude Include="Space.h" />
@@ -238,6 +240,8 @@
     <ClCompile Include="ScoreBar.cpp" />
     <ClCompile Include="Shooter.cpp" />
     <ClCompile Include="ShooterBullet.cpp" />
+    <ClCompile Include="ShurikenBig.cpp" />
+    <ClCompile Include="ShurikenBigItem.cpp" />
     <ClCompile Include="ShurikenSmall.cpp" />
     <ClCompile Include="ShurikenItem.cpp" />
     <ClCompile Include="Sprite.cpp" />

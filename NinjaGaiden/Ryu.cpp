@@ -6,6 +6,7 @@
 #include"Enemy.h"
 #include"ScoreBar.h"
 #include"ShurikenSmall.h"
+#include"ShurikenBig.h"
 
 Ryu* Ryu::instance = 0;
 Ryu* Ryu::getInstance()
@@ -472,11 +473,23 @@ void Ryu::createNewSword()
 
 void Ryu::createNewSubWeapon()
 {
-	ShurikenSmall* shuriken = new ShurikenSmall();
-	shuriken->setX(this->getMidX());
-	shuriken->setY(this->getY() - 5);
-	shuriken->setDx(getDirection() * GLOBALS_D("SHURIKENBIG_DX"));
-	shuriken->getInitBox()->setX(getMidX());
+	if (isBigShuriken)
+	{
+		ShurikenBig* shuriken = new ShurikenBig();
+		shuriken->setX(this->getMidX() + getDirection() * 20);
+		shuriken->setY(this->getY() - 5);
+		shuriken->setDx(getDirection() * GLOBALS_D("SHURIKENBIG_DX"));
+		shuriken->getInitBox()->setX(getMidX());
+	}
+	else
+	{
+		ShurikenSmall* shuriken = new ShurikenSmall();
+		shuriken->setX(this->getMidX() );
+		shuriken->setY(this->getY() - 5);
+		shuriken->setDx(getDirection() * GLOBALS_D("SHURIKENBIG_DX"));
+		shuriken->getInitBox()->setX(getMidX());
+	}
+
 }
 
 void Ryu::setCanSitDown(bool canSitDown)
